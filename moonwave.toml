@@ -1,0 +1,17 @@
+gitRepoUrl = "https://github.com/lockefair/roblox-utility"
+gitSourceBranch = "main"
+
+[home]
+enabled = false
+includeReadme = false
+
+[docusaurus]
+tagline = "A collection of object-orientated utility modules for Roblox"
+
+[[classOrder]]
+section = "Event"
+classes = ["Event", "EventConnection"]
+
+[[classOrder]]
+section = "Connection"
+classes = ["Connection", "NetworkEvent", "NetworkRequest", "NetworkValue"]

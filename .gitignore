@@ -1,0 +1,7 @@
+*.zip
+/build
+Packages
+*.rbxl
+*.rbxl.lock
+wally.lock
+sourcemap.json

@@ -1,0 +1,8 @@
+[package]
+name = "zythdotdev/bag"
+description = "Object reference container for Roblox"
+version = "1.0.0"
+license = "MIT"
+authors = ["zythdotdev (https://zyth.dev)"]
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
