@@ -54,8 +54,8 @@ end)
 -- Server
 serverEvent:fireClient(player, 1, 2, 3)
 ```"><link data-rh="true" rel="canonical" href="https://zythdotdev.github.io/roblox-utility/api/NetworkEvent"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/NetworkEvent" hreflang="en"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/NetworkEvent" hreflang="x-default"><link rel="stylesheet" href="/roblox-utility/assets/css/styles.6b33bbd6.css">
-<link rel="preload" href="/roblox-utility/assets/js/runtime~main.b240fb5a.js" as="script">
-<link rel="preload" href="/roblox-utility/assets/js/main.ead8f5c6.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/runtime~main.0e8a598d.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/main.1acfbc18.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -95,7 +95,15 @@ clientEvent<span class="token punctuation">:</span><span class="token function">
 <span class="token comment">-- Server</span>
 serverEvent<span class="token punctuation">:</span><span class="token function">fireClient</span><span class="token punctuation">(</span>player<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 </code></pre>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Self"><code style="text-decoration:none">Self</code><a href="#Self" class="hash-link" aria-label="Direct link to Self" title="Direct link to Self">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L33"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>Self<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code></div><div></div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="className"><code style="text-decoration:none">className</code><a href="#className" class="hash-link" aria-label="Direct link to className" title="Direct link to className">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L67"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.<!-- -->className<!-- -->:<!-- --> </code> <code class="blue_P4bS">string</code></div><div>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Self"><code style="text-decoration:none">Self</code><a href="#Self" class="hash-link" aria-label="Direct link to Self" title="Direct link to Self">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L33"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>Self<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Event"><code style="text-decoration:none">Event</code><a href="#Event" class="hash-link" aria-label="Direct link to Event" title="Direct link to Event">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L42"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>Event<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connect<!-- -->: </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>callback<!-- -->: </code><code class="green_DgR4">(</code><code class="blue_P4bS">...any</code><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="green_DgR4">(</code><code class="green_DgR4">)</code></div><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code></div></div><code>}</code></div><div>
+<p>An interface that respresents an event that can be connected to</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L58"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
+<p>An interface that respresents a connection to an event. This <code>EventConnection</code> object can be used to disconnect a callback</p>
+<pre class="language-lua"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+connection<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</code></pre>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="className"><code style="text-decoration:none">className</code><a href="#className" class="hash-link" aria-label="Direct link to className" title="Direct link to className">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L67"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.<!-- -->className<!-- -->:<!-- --> </code> <code class="blue_P4bS">string</code></div><div>
 <p>Static property that defines the class name <code>NetworkEvent</code></p>
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="remoteEventDestroyed"><code style="text-decoration:none">remoteEventDestroyed</code><a href="#remoteEventDestroyed" class="hash-link" aria-label="Direct link to remoteEventDestroyed" title="Direct link to remoteEventDestroyed">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L74"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.<!-- -->remoteEventDestroyed<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code></div><div>
 <p>An event that fires when the underlying Roblox <code>RemoteEvent</code> instance is destroyed</p>
@@ -391,6 +399,41 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
                 &quot;line&quot;: 33,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
+        },
+        {
+            &quot;name&quot;: &quot;Event&quot;,
+            &quot;desc&quot;: &quot;An interface that respresents an event that can be connected to&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;connect&quot;,
+                    &quot;lua_type&quot;: &quot;(self: Event, callback: (...any) -&gt; ()) -&gt; EventConnection&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 42,
+                &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;EventConnection&quot;,
+            &quot;desc&quot;: &quot;An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback\n\n```lua\nprint(connection.connected) -- true\nconnection:disconnect()\nprint(connection.connected) -- false\n```&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;connected&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;disconnect&quot;,
+                    &quot;lua_type&quot;: &quot;(self: EventConnection) -&gt; ()&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 58,
+                &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
+            }
         }
     ],
     &quot;name&quot;: &quot;NetworkEvent&quot;,
@@ -399,8 +442,8 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
         &quot;line&quot;: 105,
         &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Self" class="table-of-contents__link toc-highlight">Self</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#className" class="table-of-contents__link toc-highlight">className</a></li><li><a href="#remoteEventDestroyed" class="table-of-contents__link toc-highlight">remoteEventDestroyed</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#connect" class="table-of-contents__link toc-highlight">.connect</a></li><li><a href="#destroy" class="table-of-contents__link toc-highlight">.destroy</a></li><li><a href="#fireAllClients" class="table-of-contents__link toc-highlight">.fireAllClients</a></li><li><a href="#fireClient" class="table-of-contents__link toc-highlight">.fireClient</a></li><li><a href="#fireFilteredClients" class="table-of-contents__link toc-highlight">.fireFilteredClients</a></li><li><a href="#fireServer" class="table-of-contents__link toc-highlight">.fireServer</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/roblox-utility/assets/js/runtime~main.b240fb5a.js"></script>
-<script src="/roblox-utility/assets/js/main.ead8f5c6.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Event" class="table-of-contents__link toc-highlight">Event</a></li><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#Self" class="table-of-contents__link toc-highlight">Self</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#className" class="table-of-contents__link toc-highlight">className</a></li><li><a href="#remoteEventDestroyed" class="table-of-contents__link toc-highlight">remoteEventDestroyed</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#connect" class="table-of-contents__link toc-highlight">.connect</a></li><li><a href="#destroy" class="table-of-contents__link toc-highlight">.destroy</a></li><li><a href="#fireAllClients" class="table-of-contents__link toc-highlight">.fireAllClients</a></li><li><a href="#fireClient" class="table-of-contents__link toc-highlight">.fireClient</a></li><li><a href="#fireFilteredClients" class="table-of-contents__link toc-highlight">.fireFilteredClients</a></li><li><a href="#fireServer" class="table-of-contents__link toc-highlight">.fireServer</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/roblox-utility/assets/js/runtime~main.0e8a598d.js"></script>
+<script src="/roblox-utility/assets/js/main.1acfbc18.js"></script>
 </body>
 </html>
