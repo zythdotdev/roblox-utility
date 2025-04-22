@@ -30,8 +30,8 @@ local NetworkEvent = Connection.NetworkEvent
 local NetworkRequest = Connection.NetworkRequest
 local NetworkValue = Connection.NetworkValue
 ```"><link data-rh="true" rel="canonical" href="https://zythdotdev.github.io/roblox-utility/api/Connection"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/Connection" hreflang="en"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/Connection" hreflang="x-default"><link rel="stylesheet" href="/roblox-utility/assets/css/styles.6b33bbd6.css">
-<link rel="preload" href="/roblox-utility/assets/js/runtime~main.be6a0a5f.js" as="script">
-<link rel="preload" href="/roblox-utility/assets/js/main.78f1c821.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/runtime~main.b240fb5a.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/main.ead8f5c6.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -48,13 +48,37 @@ local NetworkValue = Connection.NetworkValue
 <span class="token keyword">local</span> NetworkRequest <span class="token operator">=</span> Connection<span class="token punctuation">.</span>NetworkRequest
 <span class="token keyword">local</span> NetworkValue <span class="token operator">=</span> Connection<span class="token punctuation">.</span>NetworkValue
 </code></pre>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/init.lua#L21"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/init.lua#L30"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
 <p>An interface that respresents a connection to an event. This <code>EventConnection</code> object can be used to disconnect a callback</p>
 <pre class="language-lua"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- true</span>
 connection<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- false</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NetworkEvent"><code style="text-decoration:none">NetworkEvent</code><a href="#NetworkEvent" class="hash-link" aria-label="Direct link to NetworkEvent" title="Direct link to NetworkEvent">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/init.lua#L27"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NetworkEvent<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NetworkRequest"><code style="text-decoration:none">NetworkRequest</code><a href="#NetworkRequest" class="hash-link" aria-label="Direct link to NetworkRequest" title="Direct link to NetworkRequest">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/init.lua#L33"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NetworkRequest<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkRequest">NetworkRequest</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NetworkValue"><code style="text-decoration:none">NetworkValue</code><a href="#NetworkValue" class="hash-link" aria-label="Direct link to NetworkValue" title="Direct link to NetworkValue">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/init.lua#L39"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NetworkValue<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code></div><div></div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NetworkEvent"><code style="text-decoration:none">NetworkEvent</code><a href="#NetworkEvent" class="hash-link" aria-label="Direct link to NetworkEvent" title="Direct link to NetworkEvent">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/init.lua#L36"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NetworkEvent<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NetworkRequest"><code style="text-decoration:none">NetworkRequest</code><a href="#NetworkRequest" class="hash-link" aria-label="Direct link to NetworkRequest" title="Direct link to NetworkRequest">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/init.lua#L42"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NetworkRequest<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkRequest">NetworkRequest</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="NetworkValue"><code style="text-decoration:none">NetworkValue</code><a href="#NetworkValue" class="hash-link" aria-label="Direct link to NetworkValue" title="Direct link to NetworkValue">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/init.lua#L48"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>NetworkValue<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L58"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
+<p>An interface that respresents a connection to an event. This <code>EventConnection</code> object can be used to disconnect a callback</p>
+<pre class="language-lua"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+connection<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkRequest.lua#L51"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
+<p>An interface that respresents a connection to an event. This <code>EventConnection</code> object can be used to disconnect a callback</p>
+<pre class="language-lua"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+connection<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L56"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
+<p>An interface that respresents a connection to an event. This <code>EventConnection</code> object can be used to disconnect a callback</p>
+<pre class="language-lua"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+connection<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Value/init.lua#L30"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
+<p>An interface that respresents a connection to an event. This <code>EventConnection</code> object can be used to disconnect a callback</p>
+<pre class="language-lua"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- true</span>
+connection<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- false</span>
+</code></pre>
+</div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [],
     &quot;properties&quot;: [],
     &quot;types&quot;: [
@@ -69,12 +93,12 @@ connection<span class="token punctuation">:</span><span class="token function">d
                 },
                 {
                     &quot;name&quot;: &quot;disconnect&quot;,
-                    &quot;lua_type&quot;: &quot;() -&gt; ()&quot;,
+                    &quot;lua_type&quot;: &quot;(self: EventConnection) -&gt; ()&quot;,
                     &quot;desc&quot;: &quot;&quot;
                 }
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 21,
+                &quot;line&quot;: 30,
                 &quot;path&quot;: &quot;src/Modules/Connection/init.lua&quot;
             }
         },
@@ -83,7 +107,7 @@ connection<span class="token punctuation">:</span><span class="token function">d
             &quot;desc&quot;: &quot;&quot;,
             &quot;lua_type&quot;: &quot;NetworkEvent&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 27,
+                &quot;line&quot;: 36,
                 &quot;path&quot;: &quot;src/Modules/Connection/init.lua&quot;
             }
         },
@@ -92,7 +116,7 @@ connection<span class="token punctuation">:</span><span class="token function">d
             &quot;desc&quot;: &quot;&quot;,
             &quot;lua_type&quot;: &quot;NetworkRequest&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 33,
+                &quot;line&quot;: 42,
                 &quot;path&quot;: &quot;src/Modules/Connection/init.lua&quot;
             }
         },
@@ -101,19 +125,99 @@ connection<span class="token punctuation">:</span><span class="token function">d
             &quot;desc&quot;: &quot;&quot;,
             &quot;lua_type&quot;: &quot;NetworkValue&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 39,
+                &quot;line&quot;: 48,
                 &quot;path&quot;: &quot;src/Modules/Connection/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;EventConnection&quot;,
+            &quot;desc&quot;: &quot;An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback\n\n```lua\nprint(connection.connected) -- true\nconnection:disconnect()\nprint(connection.connected) -- false\n```&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;connected&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;disconnect&quot;,
+                    &quot;lua_type&quot;: &quot;(self: EventConnection) -&gt; ()&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 58,
+                &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;EventConnection&quot;,
+            &quot;desc&quot;: &quot;An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback\n\n```lua\nprint(connection.connected) -- true\nconnection:disconnect()\nprint(connection.connected) -- false\n```&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;connected&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;disconnect&quot;,
+                    &quot;lua_type&quot;: &quot;(self: EventConnection) -&gt; ()&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 51,
+                &quot;path&quot;: &quot;src/Modules/Connection/NetworkRequest.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;EventConnection&quot;,
+            &quot;desc&quot;: &quot;An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback\n\n```lua\nprint(connection.connected) -- true\nconnection:disconnect()\nprint(connection.connected) -- false\n```&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;connected&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;disconnect&quot;,
+                    &quot;lua_type&quot;: &quot;(self: EventConnection) -&gt; ()&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 56,
+                &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;EventConnection&quot;,
+            &quot;desc&quot;: &quot;An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback\n\n```lua\nprint(connection.connected) -- true\nconnection:disconnect()\nprint(connection.connected) -- false\n```&quot;,
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;connected&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;disconnect&quot;,
+                    &quot;lua_type&quot;: &quot;(self: EventConnection) -&gt; ()&quot;,
+                    &quot;desc&quot;: &quot;&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 30,
+                &quot;path&quot;: &quot;src/Modules/Value/init.lua&quot;
             }
         }
     ],
     &quot;name&quot;: &quot;Connection&quot;,
     &quot;desc&quot;: &quot;The `Connection` package provides access the following network modules:\n\n- [NetworkEvent](/api/NetworkEvent)\n- [NetworkRequest](/api/NetworkRequest)\n- [NetworkValue](/api/NetworkValue)\n\nTo begin using the package, require it and access the various modules through the returned table\n\n```lua\nlocal Connection = require(Packages.Connection)\nlocal NetworkEvent = Connection.NetworkEvent\nlocal NetworkRequest = Connection.NetworkRequest\nlocal NetworkValue = Connection.NetworkValue\n```&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 59,
+        &quot;line&quot;: 68,
         &quot;path&quot;: &quot;src/Modules/Connection/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#NetworkEvent" class="table-of-contents__link toc-highlight">NetworkEvent</a></li><li><a href="#NetworkRequest" class="table-of-contents__link toc-highlight">NetworkRequest</a></li><li><a href="#NetworkValue" class="table-of-contents__link toc-highlight">NetworkValue</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/roblox-utility/assets/js/runtime~main.be6a0a5f.js"></script>
-<script src="/roblox-utility/assets/js/main.78f1c821.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#NetworkEvent" class="table-of-contents__link toc-highlight">NetworkEvent</a></li><li><a href="#NetworkRequest" class="table-of-contents__link toc-highlight">NetworkRequest</a></li><li><a href="#NetworkValue" class="table-of-contents__link toc-highlight">NetworkValue</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/roblox-utility/assets/js/runtime~main.b240fb5a.js"></script>
+<script src="/roblox-utility/assets/js/main.ead8f5c6.js"></script>
 </body>
 </html>
