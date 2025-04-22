@@ -15,12 +15,17 @@ type Value<T> = {
 
 --[=[
 	@within Value
+	@type Self Value
+]=]
+export type Self<T> = Value<T>
+
+--[=[
+	@within Value
 	@interface EventConnection
 	@field connected boolean
-	@field disconnect () -> ()
+	@field disconnect (self: EventConnection) -> ()
 
-	An interface that respresents a connection to a Value. An object which conforms to this interface is returned by the `Value:observe` method.
-	This `EventConnection` object can be used to disconnect the callback from the Value
+	An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback
 
 	```lua
 	print(connection.connected) -- true
@@ -29,12 +34,6 @@ type Value<T> = {
 	```
 ]=]
 export type EventConnection = Event.EventConnection
-
---[=[
-	@within Value
-	@type Self Value
-]=]
-export type Self<T> = Value<T>
 
 --[=[
 	@within Value

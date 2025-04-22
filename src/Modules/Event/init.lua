@@ -5,6 +5,12 @@ type Event = Types.Event
 
 --[=[
 	@within Event
+	@type Self Event
+]=]
+export type Self = Event
+
+--[=[
+	@within Event
 	@interface EventConnection
 	@field connected boolean
 	@field disconnect () -> ()
@@ -19,12 +25,6 @@ type Event = Types.Event
 	```
 ]=]
 export type EventConnection = Types.EventConnection
-
---[=[
-	@within Event
-	@type Self Event
-]=]
-export type Self = Event
 
 --[=[
 	@within Event

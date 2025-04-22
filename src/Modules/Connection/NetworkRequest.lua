@@ -27,6 +27,31 @@ export type Self = NetworkRequest
 
 --[=[
 	@within NetworkRequest
+	@interface Event
+	@field connect (self: Event, callback: (...any) -> ()) -> EventConnection
+
+	An interface that respresents an event that can be connected to
+]=]
+export type Event = Event.Self
+
+--[=[
+	@within NetworkRequest
+	@interface EventConnection
+	@field connected boolean
+	@field disconnect (self: EventConnection) -> ()
+
+	An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback
+
+	```lua
+	print(connection.connected) -- true
+	connection:disconnect()
+	print(connection.connected) -- false
+	```
+]=]
+export type EventConnection = Event.EventConnection
+
+--[=[
+	@within NetworkRequest
 	@prop className string
 	@tag Static
 

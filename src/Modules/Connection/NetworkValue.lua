@@ -26,12 +26,26 @@ type NetworkValue = {
 
 --[=[
 	@within NetworkValue
+	@type Self NetworkValue
+]=]
+export type Self = NetworkValue
+
+--[=[
+	@within NetworkValue
+	@interface Event
+	@field connect (self: Event, callback: (...any) -> ()) -> EventConnection
+
+	An interface that respresents an event that can be connected to
+]=]
+export type Event = Event.Self
+
+--[=[
+	@within NetworkValue
 	@interface EventConnection
 	@field connected boolean
-	@field disconnect () -> ()
+	@field disconnect (self: EventConnection) -> ()
 
-	An interface that respresents a connection to an event. An object which conforms to this interface is returned by the `NetworkValue:connect` method.
-	This `EventConnection` object can be used to disconnect the callback from the event
+	An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback
 
 	```lua
 	print(connection.connected) -- true
@@ -40,12 +54,6 @@ type NetworkValue = {
 	```
 ]=]
 export type EventConnection = Event.EventConnection
-
---[=[
-	@within NetworkValue
-	@type Self NetworkValue
-]=]
-export type Self = NetworkValue
 
 --[=[
 	@within NetworkValue
