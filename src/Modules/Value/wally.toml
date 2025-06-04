@@ -1,7 +1,7 @@
 [package]
 name = "zythdotdev/value"
 description = "Value tracking implementation for Roblox"
-version = "1.0.0"
+version = "1.1.0"
 license = "MIT"
 authors = ["zythdotdev (https://zyth.dev)"]
 registry = "https://github.com/UpliftGames/wally-index"

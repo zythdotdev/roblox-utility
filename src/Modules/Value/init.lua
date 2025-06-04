@@ -9,6 +9,7 @@ type Value<T> = {
 	new: (value: T?) -> Value<T?>,
 	destroy: (self: Value<T?>) -> (),
 	observe: (self: Value<T>, callback: (T?) -> ()) -> Event.EventConnection,
+	setter: (self: Value<T>) -> (value: T?) -> (),
 	set: (self: Value<T>, value: T?) -> (),
 	get: (self: Value<T>) -> T?
 }
@@ -107,6 +108,23 @@ function Value.observe<T>(self: Value<T?>, callback: (T?) -> ()): EventConnectio
 	callback(self._value)
 
 	return connection
+end
+
+--[=[
+	@return (value: T?) -> () -- A setter function that can be used to set the value
+
+	Returns a setter function that can be used to set the value of the `Value` object
+
+	```lua
+	local value = Value.new(1)
+	local setter = value:setter()
+	setter(2)
+	```
+]=]
+function Value.setter<T>(self: Value<T?>): (value: T?) -> ()
+	return function(value: T?)
+		self:set(value)
+	end
 end
 
 --[=[
