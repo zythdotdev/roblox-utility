@@ -20,8 +20,8 @@ local connection = event:Connect(function(value)
 end)
 connection:Disconnect()
 ```"><link data-rh="true" rel="canonical" href="https://zythdotdev.github.io/roblox-utility/api/EventConnection"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/EventConnection" hreflang="en"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/EventConnection" hreflang="x-default"><link rel="stylesheet" href="/roblox-utility/assets/css/styles.6b33bbd6.css">
-<link rel="preload" href="/roblox-utility/assets/js/runtime~main.b1ba3ac0.js" as="script">
-<link rel="preload" href="/roblox-utility/assets/js/main.9f4a7780.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/runtime~main.f69d165b.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/main.4f34a1c5.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -37,7 +37,7 @@ connection<span class="token punctuation">:</span><span class="token function">D
 <p>Static property that defines the class name of the <code>EventConnection</code> object</p>
 </div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Event/init.lua#L121"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>EventConnection<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><div class="inset_uKQm"><div><code>event<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>An event to connect to</p>
-</span></span></div><div><code>node<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Event#Node">Node</a></code><span class="inlineDescription_G7Er">-- <span>
+</span></span></div><div><code>node<!-- -->: </code><code class="blue_P4bS">Node</code><span class="inlineDescription_G7Er">-- <span>
 <p>A node representing the callback in the event's linked list</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><span class="inlineDescription_G7Er">-- <span>
 <p>The <code>EventConnection</code> object</p>
@@ -53,9 +53,9 @@ connection<span class="token punctuation">:</span><span class="token function">D
     <p>Do not construct this object manually. Use <code>Event:Connect</code> or <code>Event:Once</code> instead</p>
   </div>
 </div>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Disconnect"><code style="text-decoration:none">Disconnect</code><a href="#Disconnect" class="hash-link" aria-label="Direct link to Disconnect" title="Direct link to Disconnect">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Event/init.lua#L133"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>EventConnection<!-- -->.</code><code class="green_DgR4">Disconnect</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Disconnect"><code style="text-decoration:none">Disconnect</code><a href="#Disconnect" class="hash-link" aria-label="Direct link to Disconnect" title="Direct link to Disconnect">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Event/init.lua#L133"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>EventConnection<!-- -->.</code><code class="green_DgR4">Disconnect</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Disconnects the <code>EventConnection</code> object from the event and deconstructs it</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="IsConnected"><code style="text-decoration:none">IsConnected</code><a href="#IsConnected" class="hash-link" aria-label="Direct link to IsConnected" title="Direct link to IsConnected">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Event/init.lua#L157"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>EventConnection<!-- -->.</code><code class="green_DgR4">IsConnected</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code>) → </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="IsConnected"><code style="text-decoration:none">IsConnected</code><a href="#IsConnected" class="hash-link" aria-label="Direct link to IsConnected" title="Direct link to IsConnected">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Event/init.lua#L157"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>EventConnection<!-- -->.</code><code class="green_DgR4">IsConnected</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><code>) → </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
 <p>EventConnection state</p>
 </span></span></div><div>
 <p>Returns whether or not the <code>EventConnection</code> is connected to the event</p>
@@ -98,7 +98,7 @@ connection<span class="token punctuation">:</span><span class="token function">D
                 {
                     &quot;name&quot;: &quot;self&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;EventConnection&quot;
+                    &quot;lua_type&quot;: &quot;EventConnection&lt;Args&gt;&quot;
                 }
             ],
             &quot;returns&quot;: [],
@@ -115,7 +115,7 @@ connection<span class="token punctuation">:</span><span class="token function">D
                 {
                     &quot;name&quot;: &quot;self&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;EventConnection&quot;
+                    &quot;lua_type&quot;: &quot;EventConnection&lt;Args&gt;&quot;
                 }
             ],
             &quot;returns&quot;: [
@@ -152,8 +152,8 @@ connection<span class="token punctuation">:</span><span class="token function">D
         &quot;line&quot;: 105,
         &quot;path&quot;: &quot;src/Modules/Event/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#className" class="table-of-contents__link toc-highlight">className</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Disconnect" class="table-of-contents__link toc-highlight">.Disconnect</a></li><li><a href="#IsConnected" class="table-of-contents__link toc-highlight">.IsConnected</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/roblox-utility/assets/js/runtime~main.b1ba3ac0.js"></script>
-<script src="/roblox-utility/assets/js/main.9f4a7780.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#className" class="table-of-contents__link toc-highlight">className</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Disconnect" class="table-of-contents__link toc-highlight">.Disconnect</a></li><li><a href="#IsConnected" class="table-of-contents__link toc-highlight">.IsConnected</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/roblox-utility/assets/js/runtime~main.f69d165b.js"></script>
+<script src="/roblox-utility/assets/js/main.4f34a1c5.js"></script>
 </body>
 </html>

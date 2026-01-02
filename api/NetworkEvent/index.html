@@ -10,7 +10,7 @@ without having to manage remote event instance lifecycles manually – initializ
 Network events are intended to be paired. A `NetworkEvent` object should be initialized on the server first and then on the client,
 otherwise, an error will occur. The server `NetworkEvent` object will destroy the underlying Roblox `RemoteEvent` instance when it is destroyed.
 Attempting to call a method on a `NetworkEvent` after its server-side counterpart has been destroyed will result in an error. This can be monitored
-via the `NetworkEvent.remoteEventDestroyed` event
+via the `NetworkEvent.RemoteEventDestroyed` event
 
 Any type of Roblox object such as an `Enum`, `Instance`, or others can be passed as a parameter when a `NetworkEvent` is fired,
 as well as Luau types such as `number`, `string`, and `boolean`. `NetworkEvent` shares its limitations with Roblox&#x27;s `RemoteEvent` class
@@ -22,12 +22,12 @@ local serverEvent = NetworkEvent.new(&quot;MyNetworkEvent&quot;, ReplicatedStora
 
 -- Client
 local clientEvent = NetworkEvent.new(&quot;MyNetworkEvent&quot;, ReplicatedStorage)
-clientEvent:connect(function(...)
+clientEvent:Connect(function(...)
 	print(&quot;The event fired and passed the values:&quot;, ...) -- 1, 2, 3
 end)
 
 -- Server
-serverEvent:fireClient(player, 1, 2, 3)
+serverEvent:FireClient(player, 1, 2, 3)
 ```"><meta data-rh="true" property="og:description" content="An object that wraps Roblox&#x27;s remote events. It can be used to fire events between the server and client
 without having to manage remote event instance lifecycles manually – initialization and deinitialization are handled for you
 
@@ -35,7 +35,7 @@ without having to manage remote event instance lifecycles manually – initializ
 Network events are intended to be paired. A `NetworkEvent` object should be initialized on the server first and then on the client,
 otherwise, an error will occur. The server `NetworkEvent` object will destroy the underlying Roblox `RemoteEvent` instance when it is destroyed.
 Attempting to call a method on a `NetworkEvent` after its server-side counterpart has been destroyed will result in an error. This can be monitored
-via the `NetworkEvent.remoteEventDestroyed` event
+via the `NetworkEvent.RemoteEventDestroyed` event
 
 Any type of Roblox object such as an `Enum`, `Instance`, or others can be passed as a parameter when a `NetworkEvent` is fired,
 as well as Luau types such as `number`, `string`, and `boolean`. `NetworkEvent` shares its limitations with Roblox&#x27;s `RemoteEvent` class
@@ -47,15 +47,15 @@ local serverEvent = NetworkEvent.new(&quot;MyNetworkEvent&quot;, ReplicatedStora
 
 -- Client
 local clientEvent = NetworkEvent.new(&quot;MyNetworkEvent&quot;, ReplicatedStorage)
-clientEvent:connect(function(...)
+clientEvent:Connect(function(...)
 	print(&quot;The event fired and passed the values:&quot;, ...) -- 1, 2, 3
 end)
 
 -- Server
-serverEvent:fireClient(player, 1, 2, 3)
+serverEvent:FireClient(player, 1, 2, 3)
 ```"><link data-rh="true" rel="canonical" href="https://zythdotdev.github.io/roblox-utility/api/NetworkEvent"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/NetworkEvent" hreflang="en"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/NetworkEvent" hreflang="x-default"><link rel="stylesheet" href="/roblox-utility/assets/css/styles.6b33bbd6.css">
-<link rel="preload" href="/roblox-utility/assets/js/runtime~main.b1ba3ac0.js" as="script">
-<link rel="preload" href="/roblox-utility/assets/js/main.9f4a7780.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/runtime~main.f69d165b.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/main.4f34a1c5.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -75,7 +75,7 @@ serverEvent:fireClient(player, 1, 2, 3)
       Network events are intended to be paired. A <code>NetworkEvent</code> object should be initialized on the server first and then on the client,
       otherwise, an error will occur. The server <code>NetworkEvent</code> object will destroy the underlying Roblox <code>RemoteEvent</code> instance when it is destroyed.
       Attempting to call a method on a <code>NetworkEvent</code> after its server-side counterpart has been destroyed will result in an error. This can be monitored
-      via the <code>NetworkEvent.remoteEventDestroyed</code> event
+      via the <code>NetworkEvent.RemoteEventDestroyed</code> event
     </p>
     <p>
       Any type of Roblox object such as an <code>Enum</code>, <code>Instance</code>, or others can be passed as a parameter when a <code>NetworkEvent</code> is fired,
@@ -88,38 +88,30 @@ serverEvent:fireClient(player, 1, 2, 3)
 
 <span class="token comment">-- Client</span>
 <span class="token keyword">local</span> clientEvent <span class="token operator">=</span> NetworkEvent<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"MyNetworkEvent"</span><span class="token punctuation">,</span> ReplicatedStorage<span class="token punctuation">)</span>
-clientEvent<span class="token punctuation">:</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">...</span><span class="token punctuation">)</span>
+clientEvent<span class="token punctuation">:</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">...</span><span class="token punctuation">)</span>
 	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"The event fired and passed the values:"</span><span class="token punctuation">,</span> <span class="token punctuation">...</span><span class="token punctuation">)</span> <span class="token comment">-- 1, 2, 3</span>
 <span class="token keyword">end</span><span class="token punctuation">)</span>
 
 <span class="token comment">-- Server</span>
-serverEvent<span class="token punctuation">:</span><span class="token function">fireClient</span><span class="token punctuation">(</span>player<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+serverEvent<span class="token punctuation">:</span><span class="token function">FireClient</span><span class="token punctuation">(</span>player<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 </code></pre>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Self"><code style="text-decoration:none">Self</code><a href="#Self" class="hash-link" aria-label="Direct link to Self" title="Direct link to Self">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L33"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>Self<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Event"><code style="text-decoration:none">Event</code><a href="#Event" class="hash-link" aria-label="Direct link to Event" title="Direct link to Event">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L42"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>Event<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connect<!-- -->: </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>callback<!-- -->: </code><code class="green_DgR4">(</code><code class="blue_P4bS">...any</code><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="green_DgR4">(</code><code class="green_DgR4">)</code></div><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code></div></div><code>}</code></div><div>
-<p>An interface that respresents an event that can be connected to</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L58"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
-<p>An interface that respresents a connection to an event. This <code>EventConnection</code> object can be used to disconnect a callback</p>
-<pre class="language-lua"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- true</span>
-connection<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- false</span>
-</code></pre>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="className"><code style="text-decoration:none">className</code><a href="#className" class="hash-link" aria-label="Direct link to className" title="Direct link to className">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L67"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.<!-- -->className<!-- -->:<!-- --> </code> <code class="blue_P4bS">string</code></div><div>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Self&lt;Args&gt;"><code style="text-decoration:none">Self&lt;Args&gt;</code><a href="#Self&lt;Args&gt;" class="hash-link" aria-label="Direct link to Self&lt;Args&gt;" title="Direct link to Self&lt;Args&gt;">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L35"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>Self&lt;Args&gt;<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code></div><div></div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="className"><code style="text-decoration:none">className</code><a href="#className" class="hash-link" aria-label="Direct link to className" title="Direct link to className">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L72"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.<!-- -->className<!-- -->:<!-- --> </code> <code class="blue_P4bS">string</code></div><div>
 <p>Static property that defines the class name <code>NetworkEvent</code></p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="remoteEventDestroyed"><code style="text-decoration:none">remoteEventDestroyed</code><a href="#remoteEventDestroyed" class="hash-link" aria-label="Direct link to remoteEventDestroyed" title="Direct link to remoteEventDestroyed">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L74"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.<!-- -->remoteEventDestroyed<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="RemoteEventDestroyed"><code style="text-decoration:none">RemoteEventDestroyed</code><a href="#RemoteEventDestroyed" class="hash-link" aria-label="Direct link to RemoteEventDestroyed" title="Direct link to RemoteEventDestroyed">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L79"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.<!-- -->RemoteEventDestroyed<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code></div><div>
 <p>An event that fires when the underlying Roblox <code>RemoteEvent</code> instance is destroyed</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L118"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><div class="inset_uKQm"><div><code>name<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L123"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><div class="inset_uKQm"><div><code>name<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>The name of the <code>NetworkEvent</code> instance which must match on the client and server</p>
 </span></span></div><div><code>parent<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>The parent of the <code>NetworkEvent</code> instance which must match on the client and server</p>
 </span></span></div><div><code>unreliable<!-- -->: </code><code class="blue_P4bS">boolean?</code><span class="inlineDescription_G7Er">-- <span>
 <p>Whether or not the event should be unreliable. Defaults to <code>false</code></p>
-</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><span class="inlineDescription_G7Er">-- <span>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><span class="inlineDescription_G7Er">-- <span>
 <p>The <code>NetworkEvent</code> object</p>
 </span></span></div><div>
 <p>Constructs a new <code>NetworkEvent</code> object. The 'unreliable' parameter is defined by the server and ignored by the client</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="destroy"><code style="text-decoration:none">destroy</code><a href="#destroy" class="hash-link" aria-label="Direct link to destroy" title="Direct link to destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L145"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">destroy</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Destroy"><code style="text-decoration:none">Destroy</code><a href="#Destroy" class="hash-link" aria-label="Direct link to Destroy" title="Direct link to Destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L150"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">Destroy</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Deconstructs the <code>NetworkEvent</code> object</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="connect"><code style="text-decoration:none">connect</code><a href="#connect" class="hash-link" aria-label="Direct link to connect" title="Direct link to connect">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L192"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">connect</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code>,</code></div><div><code>callback<!-- -->: </code><code class="purple_ieR2">(</code><code class="blue_P4bS">...any</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Connect"><code style="text-decoration:none">Connect</code><a href="#Connect" class="hash-link" aria-label="Direct link to Connect" title="Direct link to Connect">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L197"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">Connect</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><code>,</code></div><div><code>callback<!-- -->: </code><code class="purple_ieR2">(</code><code class="blue_P4bS">...any</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><span class="inlineDescription_G7Er">-- <span>
 <p>The callback to be invoked when the event is fired</p>
 </span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><span class="inlineDescription_G7Er">-- <span>
 <p>An event connection that can be disconnected</p>
@@ -136,44 +128,44 @@ connection<span class="token punctuation">:</span><span class="token function">d
   </div>
 </div>
 <pre class="language-lua"><code class="language-lua"><span class="token comment">-- Client</span>
-clientEvent<span class="token punctuation">:</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">...</span><span class="token punctuation">)</span>
+clientEvent<span class="token punctuation">:</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">...</span><span class="token punctuation">)</span>
 	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"The event fired and passed the values:"</span><span class="token punctuation">,</span> <span class="token punctuation">...</span><span class="token punctuation">)</span>
 <span class="token keyword">end</span><span class="token punctuation">)</span>
 
 <span class="token comment">-- Server</span>
-serverEvent<span class="token punctuation">:</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>player<span class="token punctuation">,</span> <span class="token punctuation">...</span><span class="token punctuation">)</span>
+serverEvent<span class="token punctuation">:</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>player<span class="token punctuation">,</span> <span class="token punctuation">...</span><span class="token punctuation">)</span>
 	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"The event was fired by "</span> <span class="token operator">..</span> player <span class="token operator">..</span> <span class="token string">" and passed the values:"</span><span class="token punctuation">,</span> <span class="token punctuation">...</span><span class="token punctuation">)</span>
 <span class="token keyword">end</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="fireServer"><code style="text-decoration:none">fireServer</code><a href="#fireServer" class="hash-link" aria-label="Direct link to fireServer" title="Direct link to fireServer">​</a></h3><span class="badge_Ba2I" style="color:#349AD5"><span class="badgeTooltip_cWXP">This item only works when running on the client.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 337 304" fill="#349AD5" role="img" aria-label="This item only works when running on the client."><path d="M0 201h337v36H0v-36zm0 0zM0 0v188h337V0H0zM218 287h30c12 0 12 17 0 17H88c-11 0-11-17 0-17h31l10-39h79l10 39z"></path></svg> <!-- -->Client</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L218"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">fireServer</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FireServer"><code style="text-decoration:none">FireServer</code><a href="#FireServer" class="hash-link" aria-label="Direct link to FireServer" title="Direct link to FireServer">​</a></h3><span class="badge_Ba2I" style="color:#349AD5"><span class="badgeTooltip_cWXP">This item only works when running on the client.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 337 304" fill="#349AD5" role="img" aria-label="This item only works when running on the client."><path d="M0 201h337v36H0v-36zm0 0zM0 0v188h337V0H0zM218 287h30c12 0 12 17 0 17H88c-11 0-11-17 0-17h31l10-39h79l10 39z"></path></svg> <!-- -->Client</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L226"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">FireServer</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code><span class="inlineDescription_G7Er">-- <span>
 <p>The arguments to pass to the server</p>
 </span></span></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Fires the <code>NetworkEvent</code> on the client, passing the given arguments to the server</p>
-<pre class="language-lua"><code class="language-lua">event<span class="token punctuation">:</span><span class="token function">fireServer</span><span class="token punctuation">(</span><span class="token string">"Hello, server!"</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua">event<span class="token punctuation">:</span><span class="token function">FireServer</span><span class="token punctuation">(</span><span class="token string">"Hello, server!"</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="fireClient"><code style="text-decoration:none">fireClient</code><a href="#fireClient" class="hash-link" aria-label="Direct link to fireClient" title="Direct link to fireClient">​</a></h3><span class="badge_Ba2I" style="color:#00CC67"><span class="badgeTooltip_cWXP">This item only works when running on the server.</span><span class="badgeToolTipTail_H9D_"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L241"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">fireClient</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code>,</code></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FireClient"><code style="text-decoration:none">FireClient</code><a href="#FireClient" class="hash-link" aria-label="Direct link to FireClient" title="Direct link to FireClient">​</a></h3><span class="badge_Ba2I" style="color:#00CC67"><span class="badgeTooltip_cWXP">This item only works when running on the server.</span><span class="badgeToolTipTail_H9D_"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L249"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">FireClient</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><code>,</code></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>The player to fire the event to</p>
 </span></span></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code><span class="inlineDescription_G7Er">-- <span>
 <p>The arguments to pass to the client</p>
 </span></span></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Fires the <code>NetworkEvent</code> on the server, passing the given arguments to the players client</p>
-<pre class="language-lua"><code class="language-lua">event<span class="token punctuation">:</span><span class="token function">fireClient</span><span class="token punctuation">(</span>player<span class="token punctuation">,</span> <span class="token string">"Hello, client!"</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua">event<span class="token punctuation">:</span><span class="token function">FireClient</span><span class="token punctuation">(</span>player<span class="token punctuation">,</span> <span class="token string">"Hello, client!"</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="fireFilteredClients"><code style="text-decoration:none">fireFilteredClients</code><a href="#fireFilteredClients" class="hash-link" aria-label="Direct link to fireFilteredClients" title="Direct link to fireFilteredClients">​</a></h3><span class="badge_Ba2I" style="color:#00CC67"><span class="badgeTooltip_cWXP">This item only works when running on the server.</span><span class="badgeToolTipTail_H9D_"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L268"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">fireFilteredClients</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code>,</code></div><div><code>predicate<!-- -->: </code><code class="purple_ieR2">(</code><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS">boolean</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FireFilteredClients"><code style="text-decoration:none">FireFilteredClients</code><a href="#FireFilteredClients" class="hash-link" aria-label="Direct link to FireFilteredClients" title="Direct link to FireFilteredClients">​</a></h3><span class="badge_Ba2I" style="color:#00CC67"><span class="badgeTooltip_cWXP">This item only works when running on the server.</span><span class="badgeToolTipTail_H9D_"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L280"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">FireFilteredClients</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><code>,</code></div><div><code>predicate<!-- -->: </code><code class="purple_ieR2">(</code><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS">boolean</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>The predicate to check against each player</p>
 </span></span></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code><span class="inlineDescription_G7Er">-- <span>
 <p>The arguments to pass to the client</p>
 </span></span></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Fires the <code>NetworkEvent</code> on the server, passing the given arguments to player clients that pass the given predicate check</p>
-<pre class="language-lua"><code class="language-lua">event<span class="token punctuation">:</span><span class="token function">fireFilteredClients</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>player<span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua">event<span class="token punctuation">:</span><span class="token function">FireFilteredClients</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>player<span class="token punctuation">)</span>
 	<span class="token keyword">return</span> player<span class="token punctuation">.</span>Team <span class="token operator">==</span> game<span class="token punctuation">.</span>Teams<span class="token punctuation">.</span>Heroes
 <span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token string">"You win!"</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="fireAllClients"><code style="text-decoration:none">fireAllClients</code><a href="#fireAllClients" class="hash-link" aria-label="Direct link to fireAllClients" title="Direct link to fireAllClients">​</a></h3><span class="badge_Ba2I" style="color:#00CC67"><span class="badgeTooltip_cWXP">This item only works when running on the server.</span><span class="badgeToolTipTail_H9D_"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L296"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">fireAllClients</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="FireAllClients"><code style="text-decoration:none">FireAllClients</code><a href="#FireAllClients" class="hash-link" aria-label="Direct link to FireAllClients" title="Direct link to FireAllClients">​</a></h3><span class="badge_Ba2I" style="color:#00CC67"><span class="badgeTooltip_cWXP">This item only works when running on the server.</span><span class="badgeToolTipTail_H9D_"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/lockefair/roblox-utility/blob/main/src/Modules/Connection/NetworkEvent.lua#L312"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkEvent<!-- -->.</code><code class="green_DgR4">FireAllClients</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkEvent">NetworkEvent</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">Args</code><code class="op_lSLc">&gt;</code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code><span class="inlineDescription_G7Er">-- <span>
 <p>The arguments to pass to the clients</p>
 </span></span></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Fires the <code>NetworkEvent</code> on the server, passing the given arguments to all clients</p>
-<pre class="language-lua"><code class="language-lua">event<span class="token punctuation">:</span><span class="token function">fireAllClients</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua">event<span class="token punctuation">:</span><span class="token function">FireAllClients</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 </code></pre>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
@@ -200,7 +192,7 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
             &quot;returns&quot;: [
                 {
                     &quot;desc&quot;: &quot;The `NetworkEvent` object&quot;,
-                    &quot;lua_type&quot;: &quot;NetworkEvent&quot;
+                    &quot;lua_type&quot;: &quot;NetworkEvent&lt;Args&gt;&quot;
                 }
             ],
             &quot;function_type&quot;: &quot;static&quot;,
@@ -208,35 +200,35 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
                 &quot;Static&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 118,
+                &quot;line&quot;: 123,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;destroy&quot;,
+            &quot;name&quot;: &quot;Destroy&quot;,
             &quot;desc&quot;: &quot;Deconstructs the `NetworkEvent` object&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;NetworkEvent&quot;
+                    &quot;lua_type&quot;: &quot;NetworkEvent&lt;Args&gt;&quot;
                 }
             ],
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 145,
+                &quot;line&quot;: 150,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;connect&quot;,
-            &quot;desc&quot;: &quot;Connects a callback to the `NetworkEvent` which is invoked when the event is fired\n\n:::note\nWhen connecting on the server, the first argument passed to the callback is always the player that fired the event\n:::\n\n```lua\n-- Client\nclientEvent:connect(function(...)\n\tprint(\&quot;The event fired and passed the values:\&quot;, ...)\nend)\n\n-- Server\nserverEvent:connect(function(player, ...)\n\tprint(\&quot;The event was fired by \&quot; .. player .. \&quot; and passed the values:\&quot;, ...)\nend)\n```&quot;,
+            &quot;name&quot;: &quot;Connect&quot;,
+            &quot;desc&quot;: &quot;Connects a callback to the `NetworkEvent` which is invoked when the event is fired\n\n:::note\nWhen connecting on the server, the first argument passed to the callback is always the player that fired the event\n:::\n\n```lua\n-- Client\nclientEvent:Connect(function(...)\n\tprint(\&quot;The event fired and passed the values:\&quot;, ...)\nend)\n\n-- Server\nserverEvent:Connect(function(player, ...)\n\tprint(\&quot;The event was fired by \&quot; .. player .. \&quot; and passed the values:\&quot;, ...)\nend)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;NetworkEvent&quot;
+                    &quot;lua_type&quot;: &quot;NetworkEvent&lt;Args&gt;&quot;
                 },
                 {
                     &quot;name&quot;: &quot;callback&quot;,
@@ -252,18 +244,18 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 192,
+                &quot;line&quot;: 197,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;fireServer&quot;,
-            &quot;desc&quot;: &quot;Fires the `NetworkEvent` on the client, passing the given arguments to the server\n\n```lua\nevent:fireServer(\&quot;Hello, server!\&quot;)\n```&quot;,
+            &quot;name&quot;: &quot;FireServer&quot;,
+            &quot;desc&quot;: &quot;Fires the `NetworkEvent` on the client, passing the given arguments to the server\n\n```lua\nevent:FireServer(\&quot;Hello, server!\&quot;)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;NetworkEvent&quot;
+                    &quot;lua_type&quot;: &quot;NetworkEvent&lt;Args&gt;&quot;
                 },
                 {
                     &quot;name&quot;: &quot;...&quot;,
@@ -277,18 +269,18 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
                 &quot;Client&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 218,
+                &quot;line&quot;: 226,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;fireClient&quot;,
-            &quot;desc&quot;: &quot;Fires the `NetworkEvent` on the server, passing the given arguments to the players client\n\n```lua\nevent:fireClient(player, \&quot;Hello, client!\&quot;)\n```&quot;,
+            &quot;name&quot;: &quot;FireClient&quot;,
+            &quot;desc&quot;: &quot;Fires the `NetworkEvent` on the server, passing the given arguments to the players client\n\n```lua\nevent:FireClient(player, \&quot;Hello, client!\&quot;)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;NetworkEvent&quot;
+                    &quot;lua_type&quot;: &quot;NetworkEvent&lt;Args&gt;&quot;
                 },
                 {
                     &quot;name&quot;: &quot;player&quot;,
@@ -307,18 +299,18 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
                 &quot;Server&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 241,
+                &quot;line&quot;: 249,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;fireFilteredClients&quot;,
-            &quot;desc&quot;: &quot;Fires the `NetworkEvent` on the server, passing the given arguments to player clients that pass the given predicate check\n\n```lua\nevent:fireFilteredClients(function(player)\n\treturn player.Team == game.Teams.Heroes\nend, \&quot;You win!\&quot;)\n```&quot;,
+            &quot;name&quot;: &quot;FireFilteredClients&quot;,
+            &quot;desc&quot;: &quot;Fires the `NetworkEvent` on the server, passing the given arguments to player clients that pass the given predicate check\n\n```lua\nevent:FireFilteredClients(function(player)\n\treturn player.Team == game.Teams.Heroes\nend, \&quot;You win!\&quot;)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;NetworkEvent&quot;
+                    &quot;lua_type&quot;: &quot;NetworkEvent&lt;Args&gt;&quot;
                 },
                 {
                     &quot;name&quot;: &quot;predicate&quot;,
@@ -337,18 +329,18 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
                 &quot;Server&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 268,
+                &quot;line&quot;: 280,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;fireAllClients&quot;,
-            &quot;desc&quot;: &quot;Fires the `NetworkEvent` on the server, passing the given arguments to all clients\n\n```lua\nevent:fireAllClients(1, 2, 3)\n```&quot;,
+            &quot;name&quot;: &quot;FireAllClients&quot;,
+            &quot;desc&quot;: &quot;Fires the `NetworkEvent` on the server, passing the given arguments to all clients\n\n```lua\nevent:FireAllClients(1, 2, 3)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;NetworkEvent&quot;
+                    &quot;lua_type&quot;: &quot;NetworkEvent&lt;Args&gt;&quot;
                 },
                 {
                     &quot;name&quot;: &quot;...&quot;,
@@ -362,7 +354,7 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
                 &quot;Server&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 296,
+                &quot;line&quot;: 312,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         }
@@ -376,74 +368,39 @@ serverEvent<span class="token punctuation">:</span><span class="token function">
                 &quot;Static&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 67,
+                &quot;line&quot;: 72,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;remoteEventDestroyed&quot;,
+            &quot;name&quot;: &quot;RemoteEventDestroyed&quot;,
             &quot;desc&quot;: &quot;An event that fires when the underlying Roblox `RemoteEvent` instance is destroyed&quot;,
             &quot;lua_type&quot;: &quot;Event&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 74,
+                &quot;line&quot;: 79,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         }
     ],
     &quot;types&quot;: [
         {
-            &quot;name&quot;: &quot;Self&quot;,
+            &quot;name&quot;: &quot;Self&lt;Args&gt;&quot;,
             &quot;desc&quot;: &quot;&quot;,
-            &quot;lua_type&quot;: &quot;NetworkEvent&quot;,
+            &quot;lua_type&quot;: &quot;NetworkEvent&lt;Args&gt;&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 33,
-                &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;Event&quot;,
-            &quot;desc&quot;: &quot;An interface that respresents an event that can be connected to&quot;,
-            &quot;fields&quot;: [
-                {
-                    &quot;name&quot;: &quot;connect&quot;,
-                    &quot;lua_type&quot;: &quot;(self: Event, callback: (...any) -&gt; ()) -&gt; EventConnection&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                }
-            ],
-            &quot;source&quot;: {
-                &quot;line&quot;: 42,
-                &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;EventConnection&quot;,
-            &quot;desc&quot;: &quot;An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback\n\n```lua\nprint(connection.connected) -- true\nconnection:disconnect()\nprint(connection.connected) -- false\n```&quot;,
-            &quot;fields&quot;: [
-                {
-                    &quot;name&quot;: &quot;connected&quot;,
-                    &quot;lua_type&quot;: &quot;boolean&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                },
-                {
-                    &quot;name&quot;: &quot;disconnect&quot;,
-                    &quot;lua_type&quot;: &quot;(self: EventConnection) -&gt; ()&quot;,
-                    &quot;desc&quot;: &quot;&quot;
-                }
-            ],
-            &quot;source&quot;: {
-                &quot;line&quot;: 58,
+                &quot;line&quot;: 35,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
             }
         }
     ],
     &quot;name&quot;: &quot;NetworkEvent&quot;,
-    &quot;desc&quot;: &quot;An object that wraps Roblox&#x27;s remote events. It can be used to fire events between the server and client\nwithout having to manage remote event instance lifecycles manually – initialization and deinitialization are handled for you\n\n:::note\nNetwork events are intended to be paired. A `NetworkEvent` object should be initialized on the server first and then on the client,\notherwise, an error will occur. The server `NetworkEvent` object will destroy the underlying Roblox `RemoteEvent` instance when it is destroyed.\nAttempting to call a method on a `NetworkEvent` after its server-side counterpart has been destroyed will result in an error. This can be monitored\nvia the `NetworkEvent.remoteEventDestroyed` event\n\nAny type of Roblox object such as an `Enum`, `Instance`, or others can be passed as a parameter when a `NetworkEvent` is fired,\nas well as Luau types such as `number`, `string`, and `boolean`. `NetworkEvent` shares its limitations with Roblox&#x27;s `RemoteEvent` class\n:::\n\n```lua\n-- Server\nlocal serverEvent = NetworkEvent.new(\&quot;MyNetworkEvent\&quot;, ReplicatedStorage)\n\n-- Client\nlocal clientEvent = NetworkEvent.new(\&quot;MyNetworkEvent\&quot;, ReplicatedStorage)\nclientEvent:connect(function(...)\n\tprint(\&quot;The event fired and passed the values:\&quot;, ...) -- 1, 2, 3\nend)\n\n-- Server\nserverEvent:fireClient(player, 1, 2, 3)\n```&quot;,
+    &quot;desc&quot;: &quot;An object that wraps Roblox&#x27;s remote events. It can be used to fire events between the server and client\nwithout having to manage remote event instance lifecycles manually – initialization and deinitialization are handled for you\n\n:::note\nNetwork events are intended to be paired. A `NetworkEvent` object should be initialized on the server first and then on the client,\notherwise, an error will occur. The server `NetworkEvent` object will destroy the underlying Roblox `RemoteEvent` instance when it is destroyed.\nAttempting to call a method on a `NetworkEvent` after its server-side counterpart has been destroyed will result in an error. This can be monitored\nvia the `NetworkEvent.RemoteEventDestroyed` event\n\nAny type of Roblox object such as an `Enum`, `Instance`, or others can be passed as a parameter when a `NetworkEvent` is fired,\nas well as Luau types such as `number`, `string`, and `boolean`. `NetworkEvent` shares its limitations with Roblox&#x27;s `RemoteEvent` class\n:::\n\n```lua\n-- Server\nlocal serverEvent = NetworkEvent.new(\&quot;MyNetworkEvent\&quot;, ReplicatedStorage)\n\n-- Client\nlocal clientEvent = NetworkEvent.new(\&quot;MyNetworkEvent\&quot;, ReplicatedStorage)\nclientEvent:Connect(function(...)\n\tprint(\&quot;The event fired and passed the values:\&quot;, ...) -- 1, 2, 3\nend)\n\n-- Server\nserverEvent:FireClient(player, 1, 2, 3)\n```&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 105,
+        &quot;line&quot;: 110,
         &quot;path&quot;: &quot;src/Modules/Connection/NetworkEvent.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Event" class="table-of-contents__link toc-highlight">Event</a></li><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#Self" class="table-of-contents__link toc-highlight">Self</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#className" class="table-of-contents__link toc-highlight">className</a></li><li><a href="#remoteEventDestroyed" class="table-of-contents__link toc-highlight">remoteEventDestroyed</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#connect" class="table-of-contents__link toc-highlight">.connect</a></li><li><a href="#destroy" class="table-of-contents__link toc-highlight">.destroy</a></li><li><a href="#fireAllClients" class="table-of-contents__link toc-highlight">.fireAllClients</a></li><li><a href="#fireClient" class="table-of-contents__link toc-highlight">.fireClient</a></li><li><a href="#fireFilteredClients" class="table-of-contents__link toc-highlight">.fireFilteredClients</a></li><li><a href="#fireServer" class="table-of-contents__link toc-highlight">.fireServer</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/roblox-utility/assets/js/runtime~main.b1ba3ac0.js"></script>
-<script src="/roblox-utility/assets/js/main.9f4a7780.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Self&lt;Args&gt;" class="table-of-contents__link toc-highlight">Self<args></args></a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#className" class="table-of-contents__link toc-highlight">className</a></li><li><a href="#RemoteEventDestroyed" class="table-of-contents__link toc-highlight">RemoteEventDestroyed</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Connect" class="table-of-contents__link toc-highlight">.Connect</a></li><li><a href="#Destroy" class="table-of-contents__link toc-highlight">.Destroy</a></li><li><a href="#FireAllClients" class="table-of-contents__link toc-highlight">.FireAllClients</a></li><li><a href="#FireClient" class="table-of-contents__link toc-highlight">.FireClient</a></li><li><a href="#FireFilteredClients" class="table-of-contents__link toc-highlight">.FireFilteredClients</a></li><li><a href="#FireServer" class="table-of-contents__link toc-highlight">.FireServer</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/roblox-utility/assets/js/runtime~main.f69d165b.js"></script>
+<script src="/roblox-utility/assets/js/main.4f34a1c5.js"></script>
 </body>
 </html>
