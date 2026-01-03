@@ -1,7 +1,7 @@
 [package]
 name = "zythdotdev/event"
 description = "Signal implementation for Roblox"
-version = "1.0.0"
+version = "2.0.0"
 license = "MIT"
 authors = ["zythdotdev (https://zyth.dev)"]
 registry = "https://github.com/UpliftGames/wally-index"

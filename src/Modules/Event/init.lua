@@ -1,7 +1,23 @@
-local Types = require(script.Types)
-local EventConnection = require(script.EventConnection)
+--!strict
+--!native
 
-type Event = Types.Event
+type Node = {
+	Callback: (...any) -> (),
+	Next: Node?,
+}
+
+type Event = {
+	className: string,
+	_Head: Node?,
+
+	new: () -> Event,
+	Destroy: (self: Event) -> (),
+	Connect: (self: Event, callback: (...any) -> ()) -> EventConnection,
+	Once: (self: Event, callback: (...any) -> ()) -> EventConnection,
+	Wait: (self: Event, timeout: number?) -> ...any,
+	Fire: (self: Event, ...any) -> (),
+	DisconnectAll: (self: Event) -> (),
+}
 
 --[=[
 	@within Event
@@ -12,19 +28,120 @@ export type Self = Event
 --[=[
 	@within Event
 	@interface EventConnection
-	@field connected boolean
-	@field disconnect () -> ()
+	@field Disconnect () -> ()
+	@field IsConnected () -> boolean
 
-	An interface that respresents a connection to an event. An object which conforms to this interface is returned by the `Event:connect` method.
-	This `EventConnection` object can be used to disconnect the callback from the event
+	An interface that represents a connection to an event
+
+	This `EventConnection` object can be used to disconnect
+	the callback from the event
 
 	```lua
-	print(connection.connected) -- true
-	connection:disconnect()
-	print(connection.connected) -- false
+	print(connection:IsConnected()) -- true
+	connection:Disconnect()
+	print(connection:IsConnected()) -- false
 	```
 ]=]
-export type EventConnection = Types.EventConnection
+export type EventConnection = {
+	_Connected: boolean,
+	_Event: Event,
+	_Node: Node,
+
+	Disconnect: (self: EventConnection) -> (),
+	IsConnected: (self: EventConnection) -> boolean,
+}
+
+local runnerThread: thread? = nil
+
+local function run(fn: (...any) -> (), ...)
+	local acquired = runnerThread
+	runnerThread = nil
+
+	local success, errorMessage = pcall(fn, ...)
+
+	runnerThread = acquired
+
+	if not success then
+		task.spawn(function()
+			error(tostring(errorMessage), 0)
+		end)
+	end
+end
+
+local function runnerLoop(fn: (...any) -> (), ...)
+	run(fn, ...)
+	while true do
+		run(coroutine.yield())
+	end
+end
+
+--[=[
+	@within EventConnection
+	@tag Static
+	@prop className string
+
+	Static property that defines the class name of the `EventConnection` object
+]=]
+
+--[=[
+	@class EventConnection
+
+	An object that represents a connection to an event
+]=]
+local EventConnection = {}
+EventConnection.__index = EventConnection
+EventConnection.className = "EventConnection"
+
+--[=[
+	@tag Static
+	@param event Event -- An event to connect to
+	@param node Node -- A node representing the callback in the event's linked list
+	@return EventConnection -- The `EventConnection` object
+
+	Constructs a new `EventConnection` object
+
+	:::caution
+	Do not construct this object manually. Use `Event:Connect` or `Event:Once` instead
+	:::
+]=]
+function EventConnection.new(event: Event, node: Node): EventConnection
+	local self = setmetatable({
+		_Connected = true,
+		_Event = event,
+		_Node = node,
+	}, EventConnection)
+
+	return self :: EventConnection
+end
+
+--[=[
+	Disconnects the `EventConnection` object from the event
+]=]
+function EventConnection.Disconnect(self: EventConnection)
+	if not self._Connected then return end
+
+	self._Connected = false
+
+	local event = self._Event
+	if event._Head == self._Node then
+		event._Head = self._Node.Next
+	else
+		local prev = event._Head
+		while prev and prev.Next ~= self._Node do
+			prev = prev.Next
+		end
+		if prev then
+			prev.Next = self._Node.Next
+		end
+	end
+end
+
+--[=[
+	@return boolean -- Whether or not the `EventConnection` is connected to the event
+]=]
+function EventConnection.IsConnected(self: EventConnection): boolean
+	return self._Connected
+end
 
 --[=[
 	@within Event
@@ -37,16 +154,25 @@ export type EventConnection = Types.EventConnection
 --[=[
 	@class Event
 
-	A signal implementation that wraps Roblox's BindableEvent
+	A signal implementation using a linked list to store callbacks
+
+	This behaves similarly to `RBXScriptSignal`:
+	- Argument types are not encoded into the signal
+	- Fire expects `...any` and callbacks receive `...any`
+	- Type safety is enforced by convention (consumer-side annotation) and documentation
+
+	:::note
+	Tables are passed by reference, so modifying a table passed through a callback will affect the original table. This
+	is distinguished from Roblox's `RBXScriptSignal`, which passes tables by value using deep copies
+	:::
 
 	```lua
 	local event = Event.new()
-	local connection = event:connect(function(value)
-		print("The event fired and passed the value:", value)
+	event:Connect(function(stringValue: string, numberValue: number)
+		print("The event fired and passed the values:", stringValue, numberValue)
 	end)
-	event:fire("Hello, world!")
-	connection:disconnect()
-	event:destroy()
+	event:Fire("Hello, world!", 42)
+	event:Destroy()
 	```
 ]=]
 local Event = {}
@@ -61,116 +187,115 @@ Event.className = "Event"
 ]=]
 function Event.new(): Event
 	local self = setmetatable({
-		_bindableEvent = Instance.new("BindableEvent"),
-		_bindableEventConnection = nil,
-		_connections = {},
-		_callbacks = {},
-		_values = {}
+		_Head = nil,
 	}, Event)
 
-	return self
+	return self :: Event
 end
 
 --[=[
 	Deconstructs the `Event` object and disconnects/destroys all connections
 ]=]
-function Event.destroy(self: Event)
-	task.defer(function()
-		if self._connections then
-			for _, connection in pairs(self._connections) do
-				connection:destroy()
-			end
-			self._connections = nil
-		end
-		self._callbacks = nil
-		self._values = nil
-		if self._bindableEventConnection then
-			self._bindableEventConnection:Disconnect()
-			self._bindableEventConnection = nil
-		end
-		if self._bindableEvent then
-			self._bindableEvent:Destroy()
-			self._bindableEvent = nil
-		end
-	end)
+function Event.Destroy(self: Event)
+	self:DisconnectAll()
 end
 
 --[=[
-	@param callback (...any) -> () -- The callback to connect to the event
+	@param callback (...any) -> () -- The callback to invoke
 	@return EventConnection -- An event connection that can be disconnected
 
 	Connects a callback to the event which is invoked when the event is fired
-
-	```lua
-	local event = Event.new()
-	event:connect(function(...)
-		print("The event fired and passed the values:", ...)
-	end)
-	event:fire(1, 2, 3)
-	```
 ]=]
-function Event.connect(self: Event, callback: (...any) -> ()): EventConnection
-	assert(callback ~= nil and type(callback) == "function", "callback must be a function")
+function Event.Connect(self: Event, callback: (...any) -> ()): EventConnection
+	assert(type(callback) == "function", "Argument #1 must be a function")
 
-	local eventConnection = EventConnection.new(self)
-	self._connections[eventConnection] = eventConnection
-	self._callbacks[eventConnection] = callback
+	local node: Node = {
+		Callback = callback,
+		Next = self._Head,
+	}
 
-	if not self._bindableEventConnection then
-		self:_connectBindableEvent()
-	end
+	self._Head = node
 
-	return eventConnection
+	return EventConnection.new(self, node)
 end
 
 --[=[
-	@param eventConnection EventConnection -- The connection to disconnect from the event
+	@param callback (...any) -> () -- The callback to invoke once
+	@return EventConnection -- An event connection that can be disconnected
+]=]
+function Event.Once(self: Event, callback: (...any) -> ()): EventConnection
+	assert(type(callback) == "function", "Argument #1 must be a function")
 
-	Disconnects a callback from the event
+	local connection: EventConnection
 
-	:::caution
-	This is called automatically when an EventConnection is disconnected. It's not necessary to call this manually
+	connection = self:Connect(function(...)
+		connection:Disconnect()
+		callback(...)
+	end)
+
+	return connection
+end
+
+--[=[
+	@yields
+	@param timeout number? -- Optional timeout in seconds
+	@return ...any -- The values passed when the event is fired
+
+	:::note
+	If the timeout elapses, the coroutine resumes with no return values
 	:::
 ]=]
-function Event.disconnect(self: Event, eventConnection: EventConnection)
-	assert(eventConnection ~= nil and type(eventConnection) == "table" and eventConnection.className == "EventConnection", "eventConnection must be an EventConnection")
+function Event.Wait(self: Event, timeout: number?): ...any
+	local thread = coroutine.running()
+	local connection: EventConnection
+	local timedOut = false
 
-	if self._connections[eventConnection] then
-		eventConnection:destroy()
-		self._connections[eventConnection] = nil
-		self._callbacks[eventConnection] = nil
+	connection = self:Connect(function(...)
+		if timedOut then
+			return
+		end
+		connection:Disconnect()
+		task.spawn(thread, ...)
+	end)
+
+	if timeout ~= nil then
+		task.delay(timeout, function()
+			if connection:IsConnected() then
+				timedOut = true
+				connection:Disconnect()
+				task.spawn(thread)
+			end
+		end)
+	end
+
+	return coroutine.yield()
+end
+
+--[=[
+	@param ... any -- Values to pass to the event's callbacks
+
+	Fires the event with the given arguments
+]=]
+function Event.Fire(self: Event, ...)
+	local node = self._Head
+
+	if not runnerThread then
+		runnerThread = coroutine.create(runnerLoop)
+	end
+
+	local runner = runnerThread :: thread
+	while node do
+		local nextNode = node.Next
+		task.spawn(runner, node.Callback, ...)
+		node = nextNode
 	end
 end
 
 --[=[
-	@param ... any -- The values to pass to the event's callbacks
-
-	Fires the event with the given arguments
-
-	```lua
-	event:fire("Hello, world!")
-	```
+	Disconnects all connections from the event
 ]=]
-function Event.fire(self: Event, ...: any)
-	if not self._bindableEventConnection then return end
-	table.insert(self._values, {...})
-	self._bindableEvent:Fire()
-
-	-- Roblox's BindableEvent is used to hook into 'deferred events' behavior. In the future, Roblox plans to collapse events into
-	-- a single event call (https://devforum.roblox.com/t/beta-deferred-lua-event-handling/1240569), presumably when the value is the same
-	-- to reduce redundant calls
+function Event.DisconnectAll(self: Event)
+	self._Head = nil
 end
 
-function Event._connectBindableEvent(self: Event)
-	self._bindableEventConnection = self._bindableEvent.Event:Connect(function()
-		if self._callbacks then
-			for _, connection in pairs(self._connections) do
-				local callback = self._callbacks[connection]
-				task.spawn(callback, table.unpack(self._values[1]))
-			end
-		end
-		table.remove(self._values, 1)
-	end)
-end
-
-return table.freeze(Event)
+return Event
