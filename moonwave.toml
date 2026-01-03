@@ -1,4 +1,4 @@
-gitRepoUrl = "https://github.com/lockefair/roblox-utility"
+gitRepoUrl = "https://github.com/zythdotdev/roblox-utility"
 gitSourceBranch = "main"
 
 [home]
@@ -6,7 +6,10 @@ enabled = false
 includeReadme = false
 
 [docusaurus]
-tagline = "A collection of object-orientated utility modules for Roblox"
+tagline = "A collection of strictly typed utility modules for Roblox"
+
+[footer]
+style = "dark"
 
 [[classOrder]]
 section = "Event"
