@@ -3,64 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.3.1">
-<title data-rh="true">NetworkValue | roblox-utility</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://zythdotdev.github.io/roblox-utility/api/NetworkValue"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="NetworkValue | roblox-utility"><meta data-rh="true" name="description" content="An object that wraps Roblox&#x27;s remote event and synchronizes values between the server and client. Values can be set by the server and are automatically
-updated on the client. Values can be set for everybody or for a specific player
+<title data-rh="true">NetworkValue | roblox-utility</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://zythdotdev.github.io/roblox-utility/api/NetworkValue"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="NetworkValue | roblox-utility"><meta data-rh="true" name="description" content="An object that synchronizes values between the server and client using
+a network event.
+
+Values may be shared globally or set per-player. The server owns the
+underlying `RemoteEvent` and controls its lifecycle.
 
 :::note
-Network requests are intended to be paired. A `NetworkValue` object should be initialized on the server first and then on the client,
-otherwise, an error will occur. The server `NetworkValue` object will destroy the underlying Roblox `RemoteEvent` instance when it is
-destroyed. Attempting to call a method on a `NetworkValue` after its server-side counterpart has been destroyed will result in an
-error. This can be monitored via the `NetworkValue.remoteEventDestroyed` event
+Network values are intended to be paired. A `NetworkValue` must be
+initialized on the server first, then on the client.
 
-Any type of Roblox object such as an `Enum`, `Instance`, or others can be passed as a parameter when a `NetworkValue` is fired,
-as well as Luau types such as `number`, `string`, and `boolean`. `NetworkValue` shares its limitations with Roblox&#x27;s `RemoteEvent` class
-:::
+The server-side `NetworkValue` owns the underlying Roblox
+`RemoteEvent` and will destroy it when the object is destroyed.
+:::"><meta data-rh="true" property="og:description" content="An object that synchronizes values between the server and client using
+a network event.
 
-```lua
--- Server
-local serverValue = NetworkValue.new(&quot;PlayerHealth&quot;, workspace, 100)
-
--- Client
-local clientValue = NetworkValue.new(&quot;PlayerHealth&quot;, workspace)
-
-print(&quot;The players health is:&quot;, clientValue:getValue()) -- 100
-clientValue.changed:connect(function(value)
-	print(&quot;The players health changed to:&quot;, value)
-end)
-```"><meta data-rh="true" property="og:description" content="An object that wraps Roblox&#x27;s remote event and synchronizes values between the server and client. Values can be set by the server and are automatically
-updated on the client. Values can be set for everybody or for a specific player
+Values may be shared globally or set per-player. The server owns the
+underlying `RemoteEvent` and controls its lifecycle.
 
 :::note
-Network requests are intended to be paired. A `NetworkValue` object should be initialized on the server first and then on the client,
-otherwise, an error will occur. The server `NetworkValue` object will destroy the underlying Roblox `RemoteEvent` instance when it is
-destroyed. Attempting to call a method on a `NetworkValue` after its server-side counterpart has been destroyed will result in an
-error. This can be monitored via the `NetworkValue.remoteEventDestroyed` event
+Network values are intended to be paired. A `NetworkValue` must be
+initialized on the server first, then on the client.
 
-Any type of Roblox object such as an `Enum`, `Instance`, or others can be passed as a parameter when a `NetworkValue` is fired,
-as well as Luau types such as `number`, `string`, and `boolean`. `NetworkValue` shares its limitations with Roblox&#x27;s `RemoteEvent` class
-:::
-
-```lua
--- Server
-local serverValue = NetworkValue.new(&quot;PlayerHealth&quot;, workspace, 100)
-
--- Client
-local clientValue = NetworkValue.new(&quot;PlayerHealth&quot;, workspace)
-
-print(&quot;The players health is:&quot;, clientValue:getValue()) -- 100
-clientValue.changed:connect(function(value)
-	print(&quot;The players health changed to:&quot;, value)
-end)
-```"><link data-rh="true" rel="canonical" href="https://zythdotdev.github.io/roblox-utility/api/NetworkValue"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/NetworkValue" hreflang="en"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/NetworkValue" hreflang="x-default"><link rel="stylesheet" href="/roblox-utility/assets/css/styles.6b33bbd6.css">
-<link rel="preload" href="/roblox-utility/assets/js/runtime~main.c8bb7f42.js" as="script">
-<link rel="preload" href="/roblox-utility/assets/js/main.c613a14c.js" as="script">
+The server-side `NetworkValue` owns the underlying Roblox
+`RemoteEvent` and will destroy it when the object is destroyed.
+:::"><link data-rh="true" rel="canonical" href="https://zythdotdev.github.io/roblox-utility/api/NetworkValue"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/NetworkValue" hreflang="en"><link data-rh="true" rel="alternate" href="https://zythdotdev.github.io/roblox-utility/api/NetworkValue" hreflang="x-default"><link rel="stylesheet" href="/roblox-utility/assets/css/styles.6b33bbd6.css">
+<link rel="preload" href="/roblox-utility/assets/js/runtime~main.7574936d.js" as="script">
+<link rel="preload" href="/roblox-utility/assets/js/main.c1718b18.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
 <div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/roblox-utility/"><b class="navbar__title text--truncate">roblox-utility</b></a><a class="navbar__item navbar__link" href="/roblox-utility/docs/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/roblox-utility/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/zythdotdev/roblox-utility" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="searchBox_ZlJk"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/roblox-utility/api/Event">Event</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" aria-expanded="true" href="/roblox-utility/api/Connection">Connection</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/roblox-utility/api/Connection">​Connection</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/roblox-utility/api/NetworkEvent">​Network​Event</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/roblox-utility/api/NetworkRequest">​Network​Request</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/roblox-utility/api/NetworkValue">​Network​Value</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/roblox-utility/api/Bag">​Bag</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/roblox-utility/api/Value">​Value</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/roblox-utility/api/Zone">​Zone</a></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Network</span><span style="display:inline-block">Value</span></h1><div class="luaClassTags_EipM"></div><div>
 <p>
-  An object that wraps Roblox's remote event and synchronizes values between the server and client. Values can be set by the server and are automatically
-  updated on the client. Values can be set for everybody or for a specific player
+  An object that synchronizes values between the server and client using
+  a network event.
+</p>
+<p>
+  Values may be shared globally or set per-player. The server owns the
+  underlying <code>RemoteEvent</code> and controls its lifecycle.
 </p>
 <div class="admonition admonition-note alert alert--secondary">
   <div class="admonition-heading">
@@ -70,112 +50,44 @@ end)
   </div>
   <div class="admonition-content">
     <p>
-      Network requests are intended to be paired. A <code>NetworkValue</code> object should be initialized on the server first and then on the client,
-      otherwise, an error will occur. The server <code>NetworkValue</code> object will destroy the underlying Roblox <code>RemoteEvent</code> instance when it is
-      destroyed. Attempting to call a method on a <code>NetworkValue</code> after its server-side counterpart has been destroyed will result in an
-      error. This can be monitored via the <code>NetworkValue.remoteEventDestroyed</code> event
+      Network values are intended to be paired. A <code>NetworkValue</code> must be
+      initialized on the server first, then on the client.
     </p>
     <p>
-      Any type of Roblox object such as an <code>Enum</code>, <code>Instance</code>, or others can be passed as a parameter when a <code>NetworkValue</code> is fired,
-      as well as Luau types such as <code>number</code>, <code>string</code>, and <code>boolean</code>. <code>NetworkValue</code> shares its limitations with Roblox's <code>RemoteEvent</code> class
+      The server-side <code>NetworkValue</code> owns the underlying Roblox
+      <code>RemoteEvent</code> and will destroy it when the object is destroyed.
     </p>
   </div>
 </div>
-<pre class="language-lua"><code class="language-lua"><span class="token comment">-- Server</span>
-<span class="token keyword">local</span> serverValue <span class="token operator">=</span> NetworkValue<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"PlayerHealth"</span><span class="token punctuation">,</span> workspace<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
-
-<span class="token comment">-- Client</span>
-<span class="token keyword">local</span> clientValue <span class="token operator">=</span> NetworkValue<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"PlayerHealth"</span><span class="token punctuation">,</span> workspace<span class="token punctuation">)</span>
-
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"The players health is:"</span><span class="token punctuation">,</span> clientValue<span class="token punctuation">:</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- 100</span>
-clientValue<span class="token punctuation">.</span>changed<span class="token punctuation">:</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"The players health changed to:"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
-<span class="token keyword">end</span><span class="token punctuation">)</span>
-</code></pre>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Self"><code style="text-decoration:none">Self</code><a href="#Self" class="hash-link" aria-label="Direct link to Self" title="Direct link to Self">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L31"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>Self<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Event"><code style="text-decoration:none">Event</code><a href="#Event" class="hash-link" aria-label="Direct link to Event" title="Direct link to Event">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L40"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>Event<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connect<!-- -->: </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>callback<!-- -->: </code><code class="green_DgR4">(</code><code class="blue_P4bS">...any</code><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="green_DgR4">(</code><code class="green_DgR4">)</code></div><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code></div></div><code>}</code></div><div>
-<p>An interface that respresents an event that can be connected to</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L56"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>connected<!-- -->: </code><code class="blue_P4bS">boolean</code></div><div><code>disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
-<p>An interface that respresents a connection to an event. This <code>EventConnection</code> object can be used to disconnect a callback</p>
-<pre class="language-lua"><code class="language-lua"><span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- true</span>
-connection<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token function">print</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>connected<span class="token punctuation">)</span> <span class="token comment">-- false</span>
-</code></pre>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="className"><code style="text-decoration:none">className</code><a href="#className" class="hash-link" aria-label="Direct link to className" title="Direct link to className">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L65"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.<!-- -->className<!-- -->:<!-- --> </code> <code class="blue_P4bS">string</code></div><div>
-<p>Static property that defines the class name <code>NetworkValue</code></p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="remoteEventDestroyed"><code style="text-decoration:none">remoteEventDestroyed</code><a href="#remoteEventDestroyed" class="hash-link" aria-label="Direct link to remoteEventDestroyed" title="Direct link to remoteEventDestroyed">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L72"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.<!-- -->remoteEventDestroyed<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code></div><div>
-<p>An event that fires when the underlying Roblox <code>RemoteEvent</code> instance is destroyed</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L117"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><div class="inset_uKQm"><div><code>name<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
-<p>The name of the <code>NetworkValue</code> instance which must match on the client and server</p>
-</span></span></div><div><code>parent<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_G7Er">-- <span>
-<p>The parent of the <code>NetworkValue</code> instance</p>
-</span></span></div><div><code>value<!-- -->: </code><code class="blue_P4bS">any?</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
-<p>An optional initial value of the <code>NetworkValue</code> instance</p>
-</span></span></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
-<p>An optional player to set the value for</p>
-</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><span class="inlineDescription_G7Er">-- <span>
-<p>The <code>NetworkValue</code> object</p>
-</span></span></div><div>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Self"><code style="text-decoration:none">Self</code><a href="#Self" class="hash-link" aria-label="Direct link to Self" title="Direct link to Self">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L35"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>Self<!-- --> = </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code></div><div></div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Event"><code style="text-decoration:none">Event</code><a href="#Event" class="hash-link" aria-label="Direct link to Event" title="Direct link to Event">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L44"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>Event<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Connect<!-- -->: </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#Event">Event</a></code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>callback<!-- -->: </code><code class="green_DgR4">(</code><code class="blue_P4bS">...any</code><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="green_DgR4">(</code><code class="green_DgR4">)</code></div><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code></div></div><code>}</code></div><div>
+<p>An interface that represents an event that can be connected to.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="EventConnection"><code style="text-decoration:none">EventConnection</code><a href="#EventConnection" class="hash-link" aria-label="Direct link to EventConnection" title="Direct link to EventConnection">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L54"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>EventConnection<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Disconnect<!-- -->: </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div><code>IsConnected<!-- -->: </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS">boolean</code></div></div><code>}</code></div><div>
+<p>An interface that represents a connection to an event.</p>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><span class="docTag__6UZ" style="border-color:#00a1e4;color:#00a1e4">Static</span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L88"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><div class="inset_uKQm"><div><code>name<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>parent<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code></div><div><code>value<!-- -->: </code><code class="blue_P4bS">any?</code><code>,</code></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code></div><div>
 <p>
-  Constructs a new <code>NetworkValue</code> object. The value and player parameters are ignored on the client. If a value is given for a specific player,
-  the same value will be set to nil for all other players
+  Constructs a new <code>NetworkValue</code>. The <code>value</code> and <code>player</code> parameters are
+  ignored on the client.
 </p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="destroy"><code style="text-decoration:none">destroy</code><a href="#destroy" class="hash-link" aria-label="Direct link to destroy" title="Direct link to destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L148"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">destroy</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>) → </code><code>(</code><code>)</code></div><div>
-<p>Deconstructs the <code>NetworkValue</code> object</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="connect"><code style="text-decoration:none">connect</code><a href="#connect" class="hash-link" aria-label="Direct link to connect" title="Direct link to connect">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L189"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">connect</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>,</code></div><div><code>callback<!-- -->: </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code>value<!-- -->: </code><code class="blue_P4bS">any?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><span class="inlineDescription_G7Er">-- <span>
-<p>The callback to be invoked when the <code>NetworkValue</code> object's value changes</p>
-</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code><span class="inlineDescription_G7Er">-- <span>
-<p>An event connection that can be disconnected</p>
-</span></span></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Destroy"><code style="text-decoration:none">Destroy</code><a href="#Destroy" class="hash-link" aria-label="Direct link to Destroy" title="Direct link to Destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L122"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">Destroy</code><code>(</code><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>Deconstructs the <code>NetworkValue</code> and releases all resources.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Connect"><code style="text-decoration:none">Connect</code><a href="#Connect" class="hash-link" aria-label="Direct link to Connect" title="Direct link to Connect">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L161"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">Connect</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>,</code></div><div><code>callback<!-- -->: </code><code class="purple_ieR2">(</code><div class="inset_uKQm"><code>value<!-- -->: </code><code class="blue_P4bS">any?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Zone#EventConnection">EventConnection</a></code></div><div>
+<p>Connects a callback that fires whenever the value changes.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Get"><code style="text-decoration:none">Get</code><a href="#Get" class="hash-link" aria-label="Direct link to Get" title="Direct link to Get">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L179"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">Get</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>,</code></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div></div><code>) → </code><code class="blue_P4bS">any?</code></div><div>
 <p>
-  Connects a callback that's invoked when the <code>NetworkValue</code> object's value changes. If the <code>NetworkValue</code> object is on the server and
-  a player is specified, then that value has been set specifically for that player, otherwise, the shared value was set
+  Returns the current value of the <code>NetworkValue</code>. If <code>player</code> is provided, the
+  player-specific value is returned; otherwise, the global value is returned. The player
+  parameter is ignored on the client.
 </p>
-<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> healthValue <span class="token operator">=</span> NetworkValue<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"PlayerHealth"</span><span class="token punctuation">,</span> ReplicatedStorage<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
-
-<span class="token keyword">local</span> connection <span class="token operator">=</span> healthValue<span class="token punctuation">:</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> player<span class="token punctuation">)</span>
-	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"The players health changed to:"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
-<span class="token keyword">end</span><span class="token punctuation">)</span>
-</code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="getValue"><code style="text-decoration:none">getValue</code><a href="#getValue" class="hash-link" aria-label="Direct link to getValue" title="Direct link to getValue">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L225"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">getValue</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>,</code></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
-<p>An optional player to get the value for</p>
-</span></span></div></div><code>) → </code><code class="blue_P4bS">any?</code><span class="inlineDescription_G7Er">-- <span>
-<p>The value of the <code>NetworkValue</code> object</p>
-</span></span></div><div>
-<p>Returns the value of the <code>NetworkValue</code> object. If called on the server and a player is specified the value for that specific player is returned</p>
-<div class="admonition admonition-note alert alert--secondary">
-  <div class="admonition-heading">
-    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
-          <path d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path>
-        </svg></span>note</h5>
-  </div>
-  <div class="admonition-content">
-    <p>
-      The player parameter is ignored on the client and the value returned is always the value of the <code>NetworkValue</code> object on the server,
-      wether that is the shared value or the value set specifically for the local player
-    </p>
-  </div>
-</div>
-<pre class="language-lua"><code class="language-lua"><span class="token comment">-- Server</span>
-serverValue<span class="token punctuation">:</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">80</span><span class="token punctuation">)</span>
-serverValue<span class="token punctuation">:</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> player1<span class="token punctuation">)</span>
-
-serverValue<span class="token punctuation">:</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">-- 80</span>
-serverValue<span class="token punctuation">:</span><span class="token function">getValue</span><span class="token punctuation">(</span>player1<span class="token punctuation">)</span> <span class="token comment">-- 50</span>
-
-<span class="token comment">-- Player1 Client</span>
-clientValue<span class="token punctuation">:</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">-- 50</span>
-
-<span class="token comment">-- Other Client(s)</span>
-clientValue<span class="token punctuation">:</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">-- 80</span>
-</code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="setValue"><code style="text-decoration:none">setValue</code><a href="#setValue" class="hash-link" aria-label="Direct link to setValue" title="Direct link to setValue">​</a></h3><span class="badge_Ba2I" style="color:#00CC67"><span class="badgeTooltip_cWXP">This item only works when running on the server.</span><span class="badgeToolTipTail_H9D_"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L265"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">setValue</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>,</code></div><div><code>value<!-- -->: </code><code class="blue_P4bS">any?</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
-<p>The value to set</p>
-</span></span></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
-<p>An optional player to set the value for</p>
-</span></span></div></div><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="WaitAsync"><code style="text-decoration:none">WaitAsync</code><a href="#WaitAsync" class="hash-link" aria-label="Direct link to WaitAsync" title="Direct link to WaitAsync">​</a></h3><span class="badge_Ba2I" style="color:#f1c40f"><span class="badgeTooltip_cWXP">This is a yielding function. When called, it will pause the Lua thread that called the function until a result is ready to be returned, without interrupting other scripts.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#f1c40f" role="img" aria-label="This is a yielding function. When called, it will pause the Lua thread that called the function until a result is ready to be returned, without interrupting other scripts."><path d="M96.4 11.9c-1.4-2.5-4-4-6.9-4H10.8c-2.9 0-5.4 1.5-6.9 4-1.4 2.5-1.4 5.5 0 7.9L43.3 88c1.4 2.5 4 4 6.9 4 2.9 0 5.4-1.5 6.9-4l39.3-68.2c1.4-2.4 1.4-5.4 0-7.9zM46.3 54.5c1.1-1.1 2.3-1.6 3.8-1.6s2.8.5 3.8 1.6c1.1 1.1 1.6 2.3 1.6 3.8s-.5 2.8-1.6 3.8c-1.1 1.1-2.3 1.6-3.8 1.6s-2.8-.5-3.8-1.6c-1.1-1.1-1.6-2.3-1.6-3.8.1-1.5.6-2.8 1.6-3.8zm-.5-4.9V21.8h8.8v27.8h-8.8z"></path></svg> <!-- -->Yields</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L217"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">WaitAsync</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>,</code></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div></div><code>) → </code><code class="blue_P4bS">any?</code></div><div>
 <p>
-  Sets the value of the <code>NetworkValue</code> object. If a player is specified, the value for that specific player is set, otherwise, a shared value
-  is set for all clients
+  Yields the current thread until the <code>NetworkValue</code> has a non-nil value.
+  If <code>player</code> is provided, the thread will only resume when that player's
+  value becomes available; otherwise, it will resume when the global value
+  becomes available.
+</p>
+<p>
+  If the value already exists, this function returns immediately.
+  The <code>player</code> parameter is ignored on the client.
 </p>
 <div class="admonition admonition-note alert alert--secondary">
   <div class="admonition-heading">
@@ -184,44 +96,45 @@ clientValue<span class="token punctuation">:</span><span class="token function">
         </svg></span>note</h5>
   </div>
   <div class="admonition-content">
-    <p>Setting a players value to nil will remove the value for that player and they will receive the shared value</p>
+    <p>This function does not distinguish between an initial set and a later change.</p>
   </div>
 </div>
-<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> healthValue <span class="token operator">=</span> NetworkValue<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"PlayerHealth"</span><span class="token punctuation">,</span> workspace<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
-
-healthValue<span class="token punctuation">:</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">80</span><span class="token punctuation">)</span>
-healthValue<span class="token punctuation">:</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> player1<span class="token punctuation">)</span>
-</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Set"><code style="text-decoration:none">Set</code><a href="#Set" class="hash-link" aria-label="Direct link to Set" title="Direct link to Set">​</a></h3><span class="badge_Ba2I" style="color:#00CC67"><span class="badgeTooltip_cWXP">This item only works when running on the server.</span><span class="badgeToolTipTail_H9D_"><svg fill="#00CC67" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 90 90" role="img" aria-label="This item only works when running on the server."><polygon points="6.125,72.421 58.544,88.523 58.544,24.372 6.125,8.269 "></polygon><polygon points="79.818,15.77 79.868,15.755 29.615,1.453 10.328,6.318 60.102,21.609 "></polygon><path d="M61.643,78.738l22.232-6.582V17.801l-22.232,6.584V78.738z M73.811,69.257c-1.174,0-2.125-1.19-2.125-2.659  c0-1.468,0.951-2.658,2.125-2.658c1.172,0,2.123,1.19,2.123,2.658C75.934,68.066,74.982,69.257,73.811,69.257z M64.898,32.121  l16.336-4.41v7.117l-16.336,4.409V32.121z M64.898,41.292l16.336-4.41v7.116l-16.336,4.409V41.292z M64.898,50.463l16.336-4.411  v7.116l-16.336,4.411V50.463z"></path><polygon points="83.875,74.893 61.643,81.477 61.643,88.547 83.875,81.963 "></polygon></svg> <!-- -->Server</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/zythdotdev/roblox-utility/blob/main/src/Modules/Connection/NetworkValue.lua#L259"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>NetworkValue<!-- -->.</code><code class="green_DgR4">Set</code><code>(</code><div class="inset_uKQm"><div><code>self<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/roblox-utility/api/Connection#NetworkValue">NetworkValue</a></code><code>,</code></div><div><code>value<!-- -->: </code><code class="blue_P4bS">any?</code><code>,</code></div><div><code>player<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player?<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
+<p>
+  Sets the value of the <code>NetworkValue</code>. If <code>player</code> is provided, only that player's
+  value is set; otherwise, the global value is set. When the global value is set, all
+  player-specific values are cleared.
+</p>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;new&quot;,
-            &quot;desc&quot;: &quot;Constructs a new `NetworkValue` object. The value and player parameters are ignored on the client. If a value is given for a specific player,\nthe same value will be set to nil for all other players&quot;,
+            &quot;desc&quot;: &quot;Constructs a new `NetworkValue`. The `value` and `player` parameters are\nignored on the client.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;name&quot;,
-                    &quot;desc&quot;: &quot;The name of the `NetworkValue` instance which must match on the client and server&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;string&quot;
                 },
                 {
                     &quot;name&quot;: &quot;parent&quot;,
-                    &quot;desc&quot;: &quot;The parent of the `NetworkValue` instance&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;Instance&quot;
                 },
                 {
                     &quot;name&quot;: &quot;value&quot;,
-                    &quot;desc&quot;: &quot;An optional initial value of the `NetworkValue` instance&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;any?&quot;
                 },
                 {
                     &quot;name&quot;: &quot;player&quot;,
-                    &quot;desc&quot;: &quot;An optional player to set the value for&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;Player?&quot;
                 }
             ],
             &quot;returns&quot;: [
                 {
-                    &quot;desc&quot;: &quot;The `NetworkValue` object&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;NetworkValue&quot;
                 }
             ],
@@ -230,13 +143,13 @@ healthValue<span class="token punctuation">:</span><span class="token function">
                 &quot;Static&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 117,
+                &quot;line&quot;: 88,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;destroy&quot;,
-            &quot;desc&quot;: &quot;Deconstructs the `NetworkValue` object&quot;,
+            &quot;name&quot;: &quot;Destroy&quot;,
+            &quot;desc&quot;: &quot;Deconstructs the `NetworkValue` and releases all resources.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
@@ -247,13 +160,13 @@ healthValue<span class="token punctuation">:</span><span class="token function">
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 148,
+                &quot;line&quot;: 122,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;connect&quot;,
-            &quot;desc&quot;: &quot;Connects a callback that&#x27;s invoked when the `NetworkValue` object&#x27;s value changes. If the `NetworkValue` object is on the server and\na player is specified, then that value has been set specifically for that player, otherwise, the shared value was set\n\n```lua\nlocal healthValue = NetworkValue.new(\&quot;PlayerHealth\&quot;, ReplicatedStorage, 100)\n\nlocal connection = healthValue:connect(function(value, player)\n\tprint(\&quot;The players health changed to:\&quot;, value)\nend)\n```&quot;,
+            &quot;name&quot;: &quot;Connect&quot;,
+            &quot;desc&quot;: &quot;Connects a callback that fires whenever the value changes.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
@@ -262,25 +175,25 @@ healthValue<span class="token punctuation">:</span><span class="token function">
                 },
                 {
                     &quot;name&quot;: &quot;callback&quot;,
-                    &quot;desc&quot;: &quot;The callback to be invoked when the `NetworkValue` object&#x27;s value changes&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;(value: any?, player: Player?) -&gt; ()&quot;
                 }
             ],
             &quot;returns&quot;: [
                 {
-                    &quot;desc&quot;: &quot;An event connection that can be disconnected&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;EventConnection&quot;
                 }
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 189,
+                &quot;line&quot;: 161,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;getValue&quot;,
-            &quot;desc&quot;: &quot;Returns the value of the `NetworkValue` object. If called on the server and a player is specified the value for that specific player is returned\n\n:::note\nThe player parameter is ignored on the client and the value returned is always the value of the `NetworkValue` object on the server,\nwether that is the shared value or the value set specifically for the local player\n:::\n\n```lua\n-- Server\nserverValue:setValue(80)\nserverValue:setValue(50, player1)\n\nserverValue:getValue() -- 80\nserverValue:getValue(player1) -- 50\n\n-- Player1 Client\nclientValue:getValue() -- 50\n\n-- Other Client(s)\nclientValue:getValue() -- 80\n```&quot;,
+            &quot;name&quot;: &quot;Get&quot;,
+            &quot;desc&quot;: &quot;Returns the current value of the `NetworkValue`. If `player` is provided, the\nplayer-specific value is returned; otherwise, the global value is returned. The player\nparameter is ignored on the client.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
@@ -289,25 +202,53 @@ healthValue<span class="token punctuation">:</span><span class="token function">
                 },
                 {
                     &quot;name&quot;: &quot;player&quot;,
-                    &quot;desc&quot;: &quot;An optional player to get the value for&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;Player?&quot;
                 }
             ],
             &quot;returns&quot;: [
                 {
-                    &quot;desc&quot;: &quot;The value of the `NetworkValue` object&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;any?&quot;
                 }
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 225,
+                &quot;line&quot;: 179,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;setValue&quot;,
-            &quot;desc&quot;: &quot;Sets the value of the `NetworkValue` object. If a player is specified, the value for that specific player is set, otherwise, a shared value\nis set for all clients\n\n:::note\nSetting a players value to nil will remove the value for that player and they will receive the shared value\n:::\n\n```lua\nlocal healthValue = NetworkValue.new(\&quot;PlayerHealth\&quot;, workspace, 100)\n\nhealthValue:setValue(80)\nhealthValue:setValue(50, player1)\n```&quot;,
+            &quot;name&quot;: &quot;WaitAsync&quot;,
+            &quot;desc&quot;: &quot;Yields the current thread until the `NetworkValue` has a non-nil value.\nIf `player` is provided, the thread will only resume when that player&#x27;s\nvalue becomes available; otherwise, it will resume when the global value\nbecomes available.\n\nIf the value already exists, this function returns immediately.\nThe `player` parameter is ignored on the client.\n\n:::note\nThis function does not distinguish between an initial set and a later change.\n:::&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;self&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;NetworkValue&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;player&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Player?&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;any?&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;yields&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 217,
+                &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Set&quot;,
+            &quot;desc&quot;: &quot;Sets the value of the `NetworkValue`. If `player` is provided, only that player&#x27;s\nvalue is set; otherwise, the global value is set. When the global value is set, all\nplayer-specific values are cleared.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;self&quot;,
@@ -316,12 +257,12 @@ healthValue<span class="token punctuation">:</span><span class="token function">
                 },
                 {
                     &quot;name&quot;: &quot;value&quot;,
-                    &quot;desc&quot;: &quot;The value to set&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;any?&quot;
                 },
                 {
                     &quot;name&quot;: &quot;player&quot;,
-                    &quot;desc&quot;: &quot;An optional player to set the value for&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
                     &quot;lua_type&quot;: &quot;Player?&quot;
                 }
             ],
@@ -331,88 +272,66 @@ healthValue<span class="token punctuation">:</span><span class="token function">
                 &quot;Server&quot;
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 265,
+                &quot;line&quot;: 259,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
             }
         }
     ],
-    &quot;properties&quot;: [
-        {
-            &quot;name&quot;: &quot;className&quot;,
-            &quot;desc&quot;: &quot;Static property that defines the class name `NetworkValue`&quot;,
-            &quot;lua_type&quot;: &quot;string&quot;,
-            &quot;tags&quot;: [
-                &quot;Static&quot;
-            ],
-            &quot;source&quot;: {
-                &quot;line&quot;: 65,
-                &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;remoteEventDestroyed&quot;,
-            &quot;desc&quot;: &quot;An event that fires when the underlying Roblox `RemoteEvent` instance is destroyed&quot;,
-            &quot;lua_type&quot;: &quot;Event&quot;,
-            &quot;source&quot;: {
-                &quot;line&quot;: 72,
-                &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
-            }
-        }
-    ],
+    &quot;properties&quot;: [],
     &quot;types&quot;: [
         {
             &quot;name&quot;: &quot;Self&quot;,
             &quot;desc&quot;: &quot;&quot;,
             &quot;lua_type&quot;: &quot;NetworkValue&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 31,
+                &quot;line&quot;: 35,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;Event&quot;,
-            &quot;desc&quot;: &quot;An interface that respresents an event that can be connected to&quot;,
+            &quot;desc&quot;: &quot;An interface that represents an event that can be connected to.&quot;,
             &quot;fields&quot;: [
                 {
-                    &quot;name&quot;: &quot;connect&quot;,
+                    &quot;name&quot;: &quot;Connect&quot;,
                     &quot;lua_type&quot;: &quot;(self: Event, callback: (...any) -&gt; ()) -&gt; EventConnection&quot;,
                     &quot;desc&quot;: &quot;&quot;
                 }
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 40,
+                &quot;line&quot;: 44,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;EventConnection&quot;,
-            &quot;desc&quot;: &quot;An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback\n\n```lua\nprint(connection.connected) -- true\nconnection:disconnect()\nprint(connection.connected) -- false\n```&quot;,
+            &quot;desc&quot;: &quot;An interface that represents a connection to an event.&quot;,
             &quot;fields&quot;: [
                 {
-                    &quot;name&quot;: &quot;connected&quot;,
-                    &quot;lua_type&quot;: &quot;boolean&quot;,
+                    &quot;name&quot;: &quot;Disconnect&quot;,
+                    &quot;lua_type&quot;: &quot;() -&gt; ()&quot;,
                     &quot;desc&quot;: &quot;&quot;
                 },
                 {
-                    &quot;name&quot;: &quot;disconnect&quot;,
-                    &quot;lua_type&quot;: &quot;(self: EventConnection) -&gt; ()&quot;,
+                    &quot;name&quot;: &quot;IsConnected&quot;,
+                    &quot;lua_type&quot;: &quot;() -&gt; boolean&quot;,
                     &quot;desc&quot;: &quot;&quot;
                 }
             ],
             &quot;source&quot;: {
-                &quot;line&quot;: 56,
+                &quot;line&quot;: 54,
                 &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
             }
         }
     ],
     &quot;name&quot;: &quot;NetworkValue&quot;,
-    &quot;desc&quot;: &quot;An object that wraps Roblox&#x27;s remote event and synchronizes values between the server and client. Values can be set by the server and are automatically\nupdated on the client. Values can be set for everybody or for a specific player\n\n:::note\nNetwork requests are intended to be paired. A `NetworkValue` object should be initialized on the server first and then on the client,\notherwise, an error will occur. The server `NetworkValue` object will destroy the underlying Roblox `RemoteEvent` instance when it is\ndestroyed. Attempting to call a method on a `NetworkValue` after its server-side counterpart has been destroyed will result in an\nerror. This can be monitored via the `NetworkValue.remoteEventDestroyed` event\n\nAny type of Roblox object such as an `Enum`, `Instance`, or others can be passed as a parameter when a `NetworkValue` is fired,\nas well as Luau types such as `number`, `string`, and `boolean`. `NetworkValue` shares its limitations with Roblox&#x27;s `RemoteEvent` class\n:::\n\n```lua\n-- Server\nlocal serverValue = NetworkValue.new(\&quot;PlayerHealth\&quot;, workspace, 100)\n\n-- Client\nlocal clientValue = NetworkValue.new(\&quot;PlayerHealth\&quot;, workspace)\n\nprint(\&quot;The players health is:\&quot;, clientValue:getValue()) -- 100\nclientValue.changed:connect(function(value)\n\tprint(\&quot;The players health changed to:\&quot;, value)\nend)\n```&quot;,
+    &quot;desc&quot;: &quot;An object that synchronizes values between the server and client using\na network event.\n\nValues may be shared globally or set per-player. The server owns the\nunderlying `RemoteEvent` and controls its lifecycle.\n\n:::note\nNetwork values are intended to be paired. A `NetworkValue` must be\ninitialized on the server first, then on the client.\n\nThe server-side `NetworkValue` owns the underlying Roblox\n`RemoteEvent` and will destroy it when the object is destroyed.\n:::&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 102,
+        &quot;line&quot;: 73,
         &quot;path&quot;: &quot;src/Modules/Connection/NetworkValue.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Event" class="table-of-contents__link toc-highlight">Event</a></li><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#Self" class="table-of-contents__link toc-highlight">Self</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#className" class="table-of-contents__link toc-highlight">className</a></li><li><a href="#remoteEventDestroyed" class="table-of-contents__link toc-highlight">remoteEventDestroyed</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#connect" class="table-of-contents__link toc-highlight">.connect</a></li><li><a href="#destroy" class="table-of-contents__link toc-highlight">.destroy</a></li><li><a href="#getValue" class="table-of-contents__link toc-highlight">.getValue</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li><li><a href="#setValue" class="table-of-contents__link toc-highlight">.setValue</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/roblox-utility/assets/js/runtime~main.c8bb7f42.js"></script>
-<script src="/roblox-utility/assets/js/main.c613a14c.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Event" class="table-of-contents__link toc-highlight">Event</a></li><li><a href="#EventConnection" class="table-of-contents__link toc-highlight">EventConnection</a></li><li><a href="#Self" class="table-of-contents__link toc-highlight">Self</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Connect" class="table-of-contents__link toc-highlight">.Connect</a></li><li><a href="#Destroy" class="table-of-contents__link toc-highlight">.Destroy</a></li><li><a href="#Get" class="table-of-contents__link toc-highlight">.Get</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li><li><a href="#Set" class="table-of-contents__link toc-highlight">.Set</a></li><li><a href="#WaitAsync" class="table-of-contents__link toc-highlight">.WaitAsync</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 zythdotdev. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/roblox-utility/assets/js/runtime~main.7574936d.js"></script>
+<script src="/roblox-utility/assets/js/main.c1718b18.js"></script>
 </body>
 </html>
