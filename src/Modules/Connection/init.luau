@@ -7,24 +7,27 @@ local NetworkValue = require(script.NetworkValue)
 --[=[
 	@within Connection
 	@interface Event
-	@field connect (self: Event, callback: (...any) -> ()) -> EventConnection
+	@field Connect (self: Event, callback: (...any) -> ()) -> EventConnection
+	@field Once (self: Event, callback: (...any) -> ()) -> EventConnection
+	@field WaitAsync (self: Event, timeout: number?) -> ...any
 
-	An interface that respresents an event that can be connected to
+	An interface that respresents an event that can be connected to.
 ]=]
 export type Event = Event.Self
 
 --[=[
 	@within Connection
 	@interface EventConnection
-	@field connected boolean
-	@field disconnect (self: EventConnection) -> ()
+	@field Disconnect () -> ()
+	@field IsConnected () -> boolean
 
-	An interface that respresents a connection to an event. This `EventConnection` object can be used to disconnect a callback
+	An interface that respresents a connection to an event. This `EventConnection` object can be used to
+	disconnect the callback from the event.
 
 	```lua
-	print(connection.connected) -- true
-	connection:disconnect()
-	print(connection.connected) -- false
+	print(connection:IsConnected()) -- true
+	connection:Disconnect()
+	print(connection:IsConnected()) -- false
 	```
 ]=]
 export type EventConnection = Event.EventConnection
@@ -56,7 +59,7 @@ export type NetworkValue = NetworkValue.Self
 	- [NetworkRequest](/api/NetworkRequest)
 	- [NetworkValue](/api/NetworkValue)
 
-	To begin using the package, require it and access the various modules through the returned table
+	To begin using the package, require it and access the various modules through the returned table.
 
 	```lua
 	local Connection = require(Packages.Connection)
@@ -71,4 +74,4 @@ local Connection = {
 	NetworkValue = NetworkValue
 }
 
-return table.freeze(Connection)
+return Connection

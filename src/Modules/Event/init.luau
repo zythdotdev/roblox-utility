@@ -9,12 +9,13 @@ type Node = {
 type Event = {
 	className: string,
 	_Head: Node?,
+	_Destroyed: boolean,
 
 	new: () -> Event,
 	Destroy: (self: Event) -> (),
 	Connect: (self: Event, callback: (...any) -> ()) -> EventConnection,
 	Once: (self: Event, callback: (...any) -> ()) -> EventConnection,
-	Wait: (self: Event, timeout: number?) -> ...any,
+	WaitAsync: (self: Event, timeout: number?) -> ...any,
 	Fire: (self: Event, ...any) -> (),
 	DisconnectAll: (self: Event) -> (),
 }
@@ -31,10 +32,9 @@ export type Self = Event
 	@field Disconnect () -> ()
 	@field IsConnected () -> boolean
 
-	An interface that represents a connection to an event
+	An interface that represents a connection to an event.
 
-	This `EventConnection` object can be used to disconnect
-	the callback from the event
+	This `EventConnection` object can be used to disconnect the callback from the event.
 
 	```lua
 	print(connection:IsConnected()) -- true
@@ -80,13 +80,13 @@ end
 	@tag Static
 	@prop className string
 
-	Static property that defines the class name of the `EventConnection` object
+	Static property that defines the class name of the `EventConnection` object.
 ]=]
 
 --[=[
 	@class EventConnection
 
-	An object that represents a connection to an event
+	An object that represents a connection to an event.
 ]=]
 local EventConnection = {}
 EventConnection.__index = EventConnection
@@ -98,10 +98,10 @@ EventConnection.className = "EventConnection"
 	@param node Node -- A node representing the callback in the event's linked list
 	@return EventConnection -- The `EventConnection` object
 
-	Constructs a new `EventConnection` object
+	Constructs a new `EventConnection` object.
 
 	:::caution
-	Do not construct this object manually. Use `Event:Connect` or `Event:Once` instead
+	Do not construct this object manually. Use `Event:Connect` or `Event:Once` instead.
 	:::
 ]=]
 function EventConnection.new(event: Event, node: Node): EventConnection
@@ -115,7 +115,7 @@ function EventConnection.new(event: Event, node: Node): EventConnection
 end
 
 --[=[
-	Disconnects the `EventConnection` object from the event
+	Disconnects the `EventConnection` object from the event.
 ]=]
 function EventConnection.Disconnect(self: EventConnection)
 	if not self._Connected then return end
@@ -134,10 +134,15 @@ function EventConnection.Disconnect(self: EventConnection)
 			prev.Next = self._Node.Next
 		end
 	end
+
+	self._Node.Next = nil
+	self._Node.Callback = nil :: any
 end
 
 --[=[
 	@return boolean -- Whether or not the `EventConnection` is connected to the event
+
+	Checks if the `EventConnection` is still connected to the event.
 ]=]
 function EventConnection.IsConnected(self: EventConnection): boolean
 	return self._Connected
@@ -148,13 +153,13 @@ end
 	@tag Static
 	@prop className string
 
-	Static property that defines the class name of the `Event` object
+	Static property that defines the class name of the `Event` object.
 ]=]
 
 --[=[
 	@class Event
 
-	A signal implementation using a linked list to store callbacks
+	A signal implementation using a linked list to store callbacks.
 
 	This behaves similarly to `RBXScriptSignal`:
 	- Argument types are not encoded into the signal
@@ -163,7 +168,7 @@ end
 
 	:::note
 	Tables are passed by reference, so modifying a table passed through a callback will affect the original table. This
-	is distinguished from Roblox's `RBXScriptSignal`, which passes tables by value using deep copies
+	is distinguished from Roblox's `RBXScriptSignal`, which passes tables by value using deep copies.
 	:::
 
 	```lua
@@ -183,30 +188,41 @@ Event.className = "Event"
 	@tag Static
 	@return Event -- The `Event` object
 
-	Constructs a new `Event` object
+	Constructs a new `Event` object.
 ]=]
 function Event.new(): Event
 	local self = setmetatable({
 		_Head = nil,
+		_Destroyed = false,
 	}, Event)
 
 	return self :: Event
 end
 
 --[=[
-	Deconstructs the `Event` object and disconnects/destroys all connections
+	Deconstructs the `Event` object and disconnects/destroys all connections.
 ]=]
 function Event.Destroy(self: Event)
+	if self._Destroyed then
+		return
+	end
+	self._Destroyed = true
+
 	self:DisconnectAll()
+	self._Head = nil
 end
 
 --[=[
 	@param callback (...any) -> () -- The callback to invoke
 	@return EventConnection -- An event connection that can be disconnected
 
-	Connects a callback to the event which is invoked when the event is fired
+	Connects a callback to the event which is invoked when the event is fired.
 ]=]
 function Event.Connect(self: Event, callback: (...any) -> ()): EventConnection
+	if self._Destroyed then
+		error("Cannot connect to a destroyed Event", 2)
+	end
+
 	assert(type(callback) == "function", "Argument #1 must be a function")
 
 	local node: Node = {
@@ -222,8 +238,14 @@ end
 --[=[
 	@param callback (...any) -> () -- The callback to invoke once
 	@return EventConnection -- An event connection that can be disconnected
+
+	Connects a callback to the event which is invoked only once when the event is fired and then disconnected.
 ]=]
 function Event.Once(self: Event, callback: (...any) -> ()): EventConnection
+	if self._Destroyed then
+		error("Cannot connect to a destroyed Event", 2)
+	end
+
 	assert(type(callback) == "function", "Argument #1 must be a function")
 
 	local connection: EventConnection
@@ -241,11 +263,16 @@ end
 	@param timeout number? -- Optional timeout in seconds
 	@return ...any -- The values passed when the event is fired
 
-	:::note
-	If the timeout elapses, the coroutine resumes with no return values
-	:::
+	Yields the current thread until the event is fired, then returns the values passed to the event. If a timeout is
+	provided, the thread will resume after the timeout elapses and return no values.
 ]=]
-function Event.Wait(self: Event, timeout: number?): ...any
+function Event.WaitAsync(self: Event, timeout: number?): ...any
+	if self._Destroyed then
+		error("Cannot wait on a destroyed Event", 2)
+	end
+
+	assert(timeout == nil or (type(timeout) == "number" and timeout >= 0), "Timeout must be a non-negative number or nil")
+
 	local thread = coroutine.running()
 	local connection: EventConnection
 	local timedOut = false
@@ -274,9 +301,13 @@ end
 --[=[
 	@param ... any -- Values to pass to the event's callbacks
 
-	Fires the event with the given arguments
+	Fires the event with the given arguments.
 ]=]
 function Event.Fire(self: Event, ...)
+	if self._Destroyed then
+		return
+	end
+
 	local node = self._Head
 
 	if not runnerThread then
@@ -292,7 +323,7 @@ function Event.Fire(self: Event, ...)
 end
 
 --[=[
-	Disconnects all connections from the event
+	Disconnects all connections from the event.
 ]=]
 function Event.DisconnectAll(self: Event)
 	self._Head = nil
