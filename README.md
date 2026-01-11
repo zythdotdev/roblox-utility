@@ -24,7 +24,3 @@ To install the packages in this repository you can use the Wally package manager
 After adding the modules to your dependency list, run `wally install`. Wally will generate a `Packages` folder containing the installed dependencies. You can then require them in your scripts.
 
 `Event = require(Packages.Event)`
-
-## Usage
-
-Each module is self-documented and can be required directly from the `Packages` folder after installation.
