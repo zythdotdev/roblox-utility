@@ -115,7 +115,19 @@ function EventConnection.new(event: Event, node: Node): EventConnection
 end
 
 --[=[
-	Disconnects the `EventConnection` object from the event.
+	Deconstructs the `EventConnection` object and disconnects it from the event if it is still connected.
+
+	:::note
+	This alias exists primarily for compatibility with third-party libraries that expect connection objects to have a
+	`Destroy` method. In general, it is recommended to use `Disconnect` instead of `Destroy` to disconnect from events.
+	:::
+]=]
+function EventConnection.Destroy(self: EventConnection)
+	self:Disconnect()
+end
+
+--[=[
+	Disconnects the `EventConnection` object from the event and deconstructs the object.
 ]=]
 function EventConnection.Disconnect(self: EventConnection)
 	if not self._Connected then return end

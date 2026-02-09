@@ -1,11 +1,11 @@
 [package]
 name = "zythdotdev/zone"
 description = "Player detecting zone implementation for Roblox"
-version = "2.0.0"
+version = "2.0.1"
 license = "MIT"
 authors = ["zythdotdev (https://zyth.dev)"]
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
 [dependencies]
-Event = "zythdotdev/event@2.0.0"
+Event = "zythdotdev/event@2.0.1"
