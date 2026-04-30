@@ -57,14 +57,12 @@ local function run(fn: (...any) -> (), ...)
 	local acquired = runnerThread
 	runnerThread = nil
 
-	local success, errorMessage = pcall(fn, ...)
+	local success, errorMessage = xpcall(fn, debug.traceback, ...)
 
 	runnerThread = acquired
 
 	if not success then
-		task.spawn(function()
-			error(tostring(errorMessage), 0)
-		end)
+		task.spawn(error, errorMessage, 0)
 	end
 end
 
