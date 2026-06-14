@@ -124,5 +124,45 @@ return function()
 			expect(observed1).to.equal(2)
 			expect(observed2).to.equal(2)
 		end)
+		it("should create computed state from an existing value", function()
+			local value = Value.new(2)
+			local computed = Value.computed(function(currentValue)
+				return currentValue * 3
+			end, { value })
+
+			expect(computed:Get()).to.equal(6)
+
+			value:Set(4)
+
+			expect(computed:Get()).to.equal(12)
+		end)
+		it("should create computed state from multiple dependencies", function()
+			local left = Value.new(2)
+			local right = Value.new(3)
+			local total = Value.computed(function()
+				return left:Get() + right:Get()
+			end, { left, right })
+
+			expect(total:Get()).to.equal(5)
+
+			right:Set(5)
+
+			expect(total:Get()).to.equal(7)
+		end)
+		it("should pass dependency values to the selector, not the Value instance itself", function()
+			local left = Value.new(2)
+			local right = Value.new(3)
+			local sawValueInstances = false
+
+			local total = Value.computed(function(firstValue, secondValue)
+				sawValueInstances = typeof(firstValue) == "table" and firstValue.className == "Value"
+					or typeof(secondValue) == "table" and secondValue.className == "Value"
+
+				return firstValue + secondValue
+			end, { left, right })
+
+			expect(sawValueInstances).to.equal(false)
+			expect(total:Get()).to.equal(5)
+		end)
 	end)
 end

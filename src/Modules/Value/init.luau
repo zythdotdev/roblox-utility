@@ -5,13 +5,15 @@ type Value<T> = {
 
 	_Event: Event.Self,
 	_Value: T?,
+	_ComputedConnections: {Event.EventConnection}?,
 
 	new: (value: T?) -> Value<T?>,
+	computed: <T>(selector: ((...any) -> T?)?, dependencies: {Value<any>}?) -> Value<T?>,
 	Destroy: (self: Value<T?>) -> (),
 	Observe: (self: Value<T>, callback: (T?) -> ()) -> Event.EventConnection,
 	Setter: (self: Value<T>) -> (value: T?) -> (),
 	Set: (self: Value<T>, value: T?) -> (),
-	Get: (self: Value<T>) -> T?
+	Get: (self: Value<T>) -> T?,
 }
 
 --[=[
@@ -79,9 +81,77 @@ function Value.new<T>(value: T?): Value<T?>
 end
 
 --[=[
+	@param selector (...any) -> T? -- A function that derives the computed value from the current dependency values in order
+	@param dependencies {Value<any>}? -- Dependency values to observe while computing the result. Each entry is passed to the selector as its own argument
+	@return Value -- A derived value that updates when its dependencies change
+
+	Creates a derived value from one or more dependencies.
+
+	```lua
+	local base = Value.new(2)
+	local multiplier = Value.new(3)
+	local total = Value.computed(function(baseValue, multiplierValue)
+		return baseValue * multiplierValue
+	end, { base, multiplier })
+	```
+
+	This example uses multiple dependencies in the array form so the computed result stays in sync with both values.
+]=]
+function Value.computed<T>(selector: (...any) -> T?, dependencies: {Value<any>}?): Value<T?>
+	assert(type(selector) == "function", "selector must be a function")
+	assert(dependencies == nil or type(dependencies) == "table", "dependencies must be an array-like table")
+
+	dependencies = dependencies or {}
+
+	local computed = Value.new(nil)
+	computed._ComputedConnections = {}
+
+	local function refresh()
+		local args = {}
+		for _, dependency in dependencies do
+			if dependency and type(dependency) == "table" and type(dependency.Get) == "function" then
+				table.insert(args, dependency:Get())
+			else
+				table.insert(args, dependency)
+			end
+		end
+
+		local success, result = pcall(selector, unpack(args))
+		if not success then
+			warn("Error in computed Value callback:", result)
+			return
+		end
+
+		computed:Set(result)
+	end
+
+	for _, dependency in dependencies do
+		if dependency and type(dependency) == "table" and type(dependency.Observe) == "function" then
+			local connection = dependency:Observe(function()
+				refresh()
+			end)
+			table.insert(computed._ComputedConnections, connection)
+		end
+	end
+
+	refresh()
+
+	return computed
+end
+
+--[=[
 	Deconstructs the `Value` object
 ]=]
 function Value.Destroy<T>(self: Value<T?>)
+	if self._ComputedConnections then
+		for _, connection in self._ComputedConnections do
+			if connection and connection:IsConnected() then
+				connection:Disconnect()
+			end
+		end
+		self._ComputedConnections = nil
+	end
+
 	self._Event:Destroy()
 	self._Event = nil
 	self._Value = nil
